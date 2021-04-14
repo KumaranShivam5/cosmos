@@ -1,0 +1,287 @@
+@font-face {
+	font-family: "cel";
+	src: url("../fonts/Celestia.otf");
+	}
+	
+@font-face {
+	font-family: "aq";
+	src: url("../fonts/CovesL.otf");
+	}
+	
+@font-face {
+	font-family: "dosis";
+	src: url("../fonts/Dosis-Medium.ttf");
+	}
+
+@font-face {
+	font-family: "dosisb";
+	src: url("../fonts/Dosis-ExtraBold.ttf");
+	}
+
+
+
+.inpimg {
+	width: 100vw;
+	/*overflow:hidden;*/
+	padding: 0 ;
+	margin:0;
+	position:absolute;
+	 z-index: -1; 
+	object-fit: cover;
+	top: 0vh;
+	/*filter: blur(1px);*/
+	/*! left: -52vh; */
+}
+
+.inpheading{
+	/*position:absolute;*/
+	color:white;
+	/*width:90%;*/
+	/*transform:translate(10vw,-40vh);*/
+	z-index:10;
+	display:flex;
+	flex-direction:column;
+	justify-content: center;
+	align-items:center;
+	/*border-bottom:solid 2px #00ff7f;*/
+	font-size:7vh !important;
+	font-family:'aq';
+	
+}
+
+.inpbutton {
+	width:10vh;
+	height:10vh;
+	font-size:5vh;
+	color:white;
+	border:none;
+	background-color:#4682B4;
+	transition:0.5s;
+	border-radius:50px 50px 50px 50px;
+	
+}
+
+.inpbutton:focus {
+  outline:none;	
+}
+
+.inpbutton:hover {
+  background-color:black;
+  border:none;
+}
+
+.inpbutton:active {
+  background-color:black;
+  border:solid 1px #4682B4;
+}
+
+
+.inpgrid-container {
+  display: grid;
+  grid-template-columns: 32% 32% 32%;
+  width:100%;
+  height:100%;
+  padding: 10px;
+  overflow-y:scroll;
+  overflow-x:hidden;
+ /* transform:translate(0,10vh);*/
+  grid-gap:20px;
+  z-index:1000;
+}
+
+.inpgrid-item {
+  border: 1px solid #4682B4;
+  border-radius:25px 25px 25px 25px;
+  padding: 10px;
+  font-family:'Courier New', monospace;
+  font-size: 3vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color:white;
+  width:100%;
+  background: rgba(0,0,0,0.5);
+  transition: all 0.15s;
+  text-align: center;
+}
+
+.inpgrid-item:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+.inp-paratext {
+ color:#4682B4;
+ font-size:3vh;
+}
+
+
+.inpwrapper {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  width:100vw;
+  font-family:'aq';
+  grid-gap:10px;
+  height:100vh;
+  padding: 10px;
+  z-index:1000;
+}
+
+.inpwrapper-children {
+  /*border: 1px solid #05B8CC;*/
+  text-align:center;
+  border-radius:25px 25px 25px 25px;
+  padding: 10px;
+  font-size: 3vh;
+}
+
+
+
+.inpinput-box {
+  width:100%;
+  color:white;
+  display:flex;
+  border:none;
+}
+
+.inpinput-label{
+	background-color:rgba(1, 50, 67, 1);
+	color:white;
+	height:7vh;
+	border:2px solid rgba(1, 50, 67, 1);
+	font-size:4vh;
+	border-radius:25px 0 0 25px;
+	width:7vh;
+	
+}
+
+.inpinput-text {
+  color:white;
+  display:flex;
+  width:80%;
+  height:7vh;
+  border-radius:0 25px 25px 0;
+  align-items:center;
+  border:2px solid rgba(1, 50, 67, 1);
+  transition: all 0.15s;
+  background-color:rgba(0,0,0,0.6);
+}
+
+
+.inpinput-text:focus{
+	outline: none;
+	background-color:#4682B4;
+	border:2px solid #4682B4;
+}
+
+.op-textbox-wrapper {
+	position:absolute;
+	z-index:15;
+	bottom:5vh;
+	left:38vw;
+}
+
+.op-textbox {
+	color:white;
+	border: solid 1px #4682B4; 
+	background-color:rgba(1, 50, 67, 1);
+	width:24vw;
+	font-size:2.5vh;
+	font-family:'Courier New', monospace;
+	padding:10px;
+}
+
+.op-detail {
+	background-color:black;
+	border:solid 1px black;
+	color:white;
+	transition:0.15s;
+	border:none;
+}
+
+.op-detail:focus {
+  outline:none;	
+}
+
+.op-detail:active {
+  background-color:rgba(0,0,0,0.5);
+}
+
+.rectangle {
+	position:absolute;
+	width:5px;
+	bottom:0vh;
+	height:70vh;
+	background-color:#4682B4;
+}
+.rectangle2 {
+	position:absolute;
+	width:20px;
+	height:10px;
+	background-color:#4682B4;
+}
+
+
+.background {
+	position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+
+@media only screen and (orientation:portrait) {
+	.inpimg {
+		width: 100vw;
+		height: 100vh;
+	}
+	
+	.inpgrid-container {
+		display: grid;
+		grid-template-columns: 100%;
+	}
+	
+	.inpwrapper {
+		grid-template-columns: 100%;
+		width:100vw;
+		font-family:'aq';
+		grid-gap:10px;
+	}
+	
+	.inpheading{
+		font-size:5vh !important;
+	}
+	
+	.inpinput-label{
+	height:6vh;
+	
+	}
+
+	.inpinput-text {
+	height:6vh;
+	}
+}
+
+
+@media only screen and (max-height: 420px) {
+	.inpheading{
+		font-size:5.5vh !important;
+	}
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 800px) {
+	.inpimg {
+		width: 100vw;
+		height: 100vh;
+	}
+	
+	.inpheading{
+		font-size:3.5vh !important;
+	}
+}
+
+
+
+
+
