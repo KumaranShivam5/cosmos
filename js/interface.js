@@ -21,13 +21,7 @@ var interface_disp = new Vue({
 
 	methods: {
 		calc_output() {
-			////////////////////
-
-
 			
-
-
-			///////////////////////
 			int_flag=0;
 			//checks here
 			if(this.om_m<0 || this.om_m>1) {int_flag=1; this.notification="invalid matter density parameter,";}
@@ -36,6 +30,8 @@ var interface_disp = new Vue({
 			if(this.z<0) {int_flag=1; this.notification+="\n invalid redshifts";}
 			if(int_flag==0)	{ 
 				//this.flag_activate=true;
+
+
 				$("#slider_1").attr("checked", false);
 				$("#slider_2").attr("checked", true);
 				$("#slider_3").attr("checked", false);
@@ -134,7 +130,12 @@ var interface_disp = new Vue({
 	},
 
 	mounted() {
-		
+		////////////////////
+
+
+
+
+		///////////////////////
 
 	},
 

@@ -70,7 +70,7 @@
 					C O S M O L O G Y <br> C A L C U L A T O R <br>
 					<div class="inp-subtitle">" Our Place in The Universe "</div>
 					<!--thoda change yaha he...just for trial-->
-					<div onclick="trial_run()">
+					<div>
 					
 						<button class='inpbutton' v-on:click='calc_output'><i class="fas fa-arrow-right"></i></button>
 					
@@ -242,7 +242,7 @@ var data_to_send = JSON.stringify({
 
 console.log('inside trial run')
 var settings = {
-"url": "http://ushasi.pythonanywhere.com/calc/get_all/",
+"url": "https://ushasi.pythonanywhere.com/calc/get_all/",
 "method": "POST",
 "timeout": 0,
 "headers": {
