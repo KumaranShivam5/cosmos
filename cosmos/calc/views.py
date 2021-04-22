@@ -47,7 +47,7 @@ def show(zgal,om_m,om_r,om_k,om_v,T_0=2.7,H_0=69.7*10**3/(10**6*3.086*10**16)):
 '''
 
 @api_view(['POST'])
-def get_all(request , a):
+def get_all(request):
     inp_params = request.data
     zgal = inp_params['zgal']
     om_m = inp_params['om_m']
