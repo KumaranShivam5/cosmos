@@ -69,7 +69,15 @@
 				<div class="inpwrapper-children inpheading">
 					C O S M O L O G Y <br> C A L C U L A T O R <br>
 					<div class="inp-subtitle">" Our Place in The Universe "</div>
-					<button class='inpbutton' v-on:click='calc_output'><i class="fas fa-arrow-right"></i></button>
+					<!--thoda change yaha he...just for trial-->
+					<div onclick="trial_run()">
+					
+						<button class='inpbutton' v-on:click='calc_output'><i class="fas fa-arrow-right"></i></button>
+					
+					
+					</div>
+					
+					
 					<div class="inp-universe-status"> Open </div>
 				</div>
 	
@@ -145,10 +153,10 @@
 			<div class="op-textbox-wrapper">
 				<div class='op-textbox'>
 				You are Here.<br>
-				The year is:<br>
-				The universe is : : years old.<br>
-				Temperature outside is:<br>
-				You've travelled a comoving distance of:<br>
+				The year is: <span id="age"></span><br>
+				The universe is : <span id="time"> </span> years old.<br>
+				Temperature outside is: <span id="temp"></span> <br>
+				You've travelled a comoving distance of: <span id="co_dist"></span><br>
 				<button class="op-detail" v-on:click='func_navigate(3)'>More</button>
 				</div>
 				<div class='rectangle'></div>
@@ -213,6 +221,46 @@
 
 </body>
 
+
+
+<script>
+
+	
+
+
+function trial_run(){
+
+var data_to_send = JSON.stringify({
+"zgal": 1,
+"om_m": 0.3,
+"om_r": 0,
+"om_k": 0,
+"om_v": 0.7,
+"T_0": 2.7
+})
+
+
+console.log('inside trial run')
+var settings = {
+"url": "http://ushasi.pythonanywhere.com/calc/get_all/",
+"method": "POST",
+"timeout": 0,
+"headers": {
+"Content-Type": "application/json"
+},
+"data": data_to_send,
+};
+
+$.ajax(settings).done(function (response) {
+console.log(response);
+$('#age').html(response['age']);
+$('#time').html(response['look_back']);
+$('#temp').html(response['cmb']);
+$('#co_dist').html(response['com_dist']);
+});
+}
+
+</script>
 
 
 </html>

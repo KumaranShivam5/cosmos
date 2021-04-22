@@ -21,6 +21,13 @@ var interface_disp = new Vue({
 
 	methods: {
 		calc_output() {
+			////////////////////
+
+
+			
+
+
+			///////////////////////
 			int_flag=0;
 			//checks here
 			if(this.om_m<0 || this.om_m>1) {int_flag=1; this.notification="invalid matter density parameter,";}
@@ -42,6 +49,8 @@ var interface_disp = new Vue({
 			if(int_flag==1) {
 					$('.hover_bkgr_fricc').show();
 			}
+
+			
 		},
 		
 		hide_notification() {
