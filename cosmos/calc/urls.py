@@ -11,4 +11,5 @@ from . import views
 urlpatterns = [
     #path('admin/', admin.site.urls),
     path('trial/', views.trial_fn),
+    path('get_all' , views.get_all)
 ]
