@@ -29,10 +29,23 @@ def trial_fn(request):
     uri = urllib.parse.quote(string)
     return Response(uri)
 
+'''
+keeping this line here baar baar variable names dekhne k liye scroll krna pd rha .. 
+send it as POST data in json format :
 
-#keeping this line here baar baar variable names dekhne k liye scroll krna pd rha .. 
-#send it as POST data in json format
-#def show(zgal,om_m,om_r,om_k,om_v,T_0=2.7,H_0=69.7*10**3/(10**6*3.086*10**16)):
+
+{"zgal":1 , 
+"om_m" : 0.3 ,
+"om_r" : 0.0 ,
+"om_k" :0.0 ,
+"om_v" :0.7 ,
+"T_0":2.7 
+}
+
+def show(zgal,om_m,om_r,om_k,om_v,T_0=2.7,H_0=69.7*10**3/(10**6*3.086*10**16)):
+
+'''
+
 @api_view(['POST'])
 def get_all(request , a):
     inp_params = request.data
@@ -43,18 +56,20 @@ def get_all(request , a):
     om_v = inp_params['om_v']
     T_0 = inp_params['T_0']
     #H_0 = inp_params['H_0']
+    
     val = show(zgal , om_m , om_r , om_k , om_v , T_0)
     data = {
-        "age" : val[0],
-        "loock_back" : val[1],
-        "ang_dia" : val[2],
-        "lum_dist" :val[3],
-        "com_dist" : val[4],
-        "H_val" : val[5] ,
-        "cmb" :val[6]
+        "age" : round(val[0] , 2),
+        "loock_back" : round(val[1] , 2),
+        "ang_dia" : round(val[2] , 2),
+        "lum_dist" : round(val[3] , 2),
+        "com_dist" :  round(val[4] , 2),
+        "H_val" : round(val[5] , 2),
+        "cmb" : round(val[6] , 2),
     }
+    
     #data = {'neme':'name is ' , 'roll' :10}
-    data_2 = request.data['zgal']
+    #data_2 = request.data
     return Response(data)
 
 
