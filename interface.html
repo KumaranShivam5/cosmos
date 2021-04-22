@@ -175,7 +175,11 @@
 		<div class="slider slide-3" id="s3">
 			<div class="bkg-grad pub-grad"></div>
 			
-			<div class="maj-heading publ-heading">DETAILS</div>
+			<div class="maj-heading publ-heading">DETAILS
+
+
+				<img id='plot_trial' src="">
+			</div>
 
 			<div class="number-pagination">
 				<span>
@@ -257,6 +261,11 @@ $('#age').html(response['age']);
 $('#time').html(response['look_back']);
 $('#temp').html(response['cmb']);
 $('#co_dist').html(response['com_dist']);
+
+
+var plot_01 = "data:image/png;base64"+response['plot_1'];
+$('#plot_trial').attr('src' , plot_01);
+
 });
 }
 
