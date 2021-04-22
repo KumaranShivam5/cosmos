@@ -178,7 +178,8 @@
 			<div class="maj-heading publ-heading">DETAILS
 
 
-				<img id='plot_trial' src="">
+				<img id='plot_trial_01' src="">
+				<img id='plot_trial_02' src="">
 			</div>
 
 			<div class="number-pagination">
@@ -264,7 +265,10 @@ $('#co_dist').html(response['com_dist']);
 
 
 var plot_01 = "data:image/png;base64,"+response['plot_1'];
-$('#plot_trial').attr('src' , plot_01);
+$('#plot_trial_01').attr('src' , plot_01);
+
+var plot_02 = "data:image/png;base64,"+response['plot_2'];
+$('#plot_trial_02').attr('src' , plot_02);
 
 });
 }
