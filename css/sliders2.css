@@ -120,3 +120,14 @@
   -webkit-transform: translateX(-200%);
   transform: translateX(-200%);
 }
+
+#grid_display{
+
+  
+  position: absolute;
+  z-index: 10000;
+  width: 100vw;
+  height: 100vh;
+  background: auto;
+  display: none;
+}
