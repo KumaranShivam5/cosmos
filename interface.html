@@ -74,7 +74,7 @@
 					<button class='inpbutton' v-on:click='calc_output'><i class="fas fa-arrow-right"></i></button>
 					
 					
-					<div class="inp-universe-status"> {{om_k}} </div>
+					<div class="inp-universe-status">{{description_curve}}(&Omega;<sub>k</sub>):{{om_k.toFixed(6)}} </div>
 				</div>
 	
 				<div class="inpwrapper-children inpgrid-container">
@@ -116,7 +116,7 @@
 				</div>
 				<div class="inpgrid-item">
 					Hubble Constant
-					<div  class='inp-paratext'>Current rate of expansion of universe.</div>
+					<div  class='inp-paratext'>Current rate of expansion of universe.(km/s/Mpc)</div>
 					<div class='inpinput-box'>
 						<div class='inpinput-label'>H<sub>0</sub></div>
 						<input type='text' class='inpinput-text' v-model='H_0' :value='H_0'></input>
@@ -125,7 +125,7 @@
 				</div>
 				<div class="inpgrid-item">
 					CMB Temperature
-					<div  class='inp-paratext'>Temperature of the CMBR today?</div>
+					<div  class='inp-paratext'>Temperature of the CMBR today? (K)</div>
 					<div class='inpinput-box'>
 						<div class='inpinput-label'>T<sub>0</sub></div>
 						<input type='text' class='inpinput-text' v-model='T_0' :value='T_0'></input>
@@ -152,7 +152,7 @@
 			<div class="op-textbox-wrapper">
 				<div class='op-textbox'>
 				You are Here.<br>
-				The year is: {{look_back}}<br>
+				The year is: {{year}}<br>
 				The universe is : {{age}} years old.<br>
 				Temperature outside is: {{cmb}} <br>
 				You've travelled a comoving distance of: {{com_dist}}<br>
