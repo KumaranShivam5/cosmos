@@ -3,13 +3,25 @@ var interface_disp = new Vue({
 	el: '#interface-js-area',
 
 	data: {
-		om_m: 0.5,
+		//input
+		om_m: 0.27,
 		om_r: 0.0,
-		om_v: 0.5,
-		k: 0,
+		om_v: 0.73,
+		om_k: 0,
 		T_0:2.7,
 		H_0: 69.7,
 		z: 0,
+		
+		//output
+		age:0,
+		look_back:0,
+		cmb:0,
+		com_dist:0,
+		ang_dia:0,
+		H_val:0,
+		lum_dist:0,
+		plot_1:[],
+		plot_2:[],
 		
 		//flag_activate: false,
 		description_modal:false,
@@ -21,6 +33,7 @@ var interface_disp = new Vue({
 
 	methods: {
 		calc_output() {
+			this.om_k=1-parseFloat(this.om_v)-parseFloat(this.om_m)-parseFloat(this.om_r);
 			
 			int_flag=0;
 			//checks here
@@ -30,8 +43,7 @@ var interface_disp = new Vue({
 			if(this.z<0) {int_flag=1; this.notification+="\n invalid redshifts";}
 			if(int_flag==0)	{ 
 				//this.flag_activate=true;
-
-
+				this.posting_stuff();
 				$("#slider_1").attr("checked", false);
 				$("#slider_2").attr("checked", true);
 				$("#slider_3").attr("checked", false);
@@ -41,12 +53,55 @@ var interface_disp = new Vue({
 				$("#s1").addClass('slider-op2')
 				$("#s2").addClass('slider-op2')
 				$("#s3").addClass('slider-op2')
+				
 			}
 			if(int_flag==1) {
 					$('.hover_bkgr_fricc').show();
 			}
 
 			
+		},
+		
+		other_curvatures() {
+			this.om_k=1-parseFloat(this.om_v)-parseFloat(this.om_m)-parseFloat(this.om_r);
+		},
+		
+		posting_stuff()	{
+			var data_to_send = JSON.stringify({
+				"zgal": parseFloat(this.z),
+				"om_m": parseFloat(this.om_m),
+				"om_r": parseFloat(this.om_r),
+				"om_k": 0,
+				"om_v": parseFloat(this.om_v),
+				"T_0": parseFloat(this.T_0),
+				"H_0": parseFloat(this.H_0)
+			})
+			
+			axios.post(
+				"https://ushasi.pythonanywhere.com/calc/get_all/", 
+				data_to_send,
+				{
+					headers: {
+						"Content-Type": "application/json"
+					}
+				}
+				)
+				.then(response => {
+					console.log(response);
+					this.age=response.data.age;
+					this.look_back=response.data.look_back;
+					this.cmb=response.data.cmb;
+					this.com_dist=response.data.com_dist;
+					this.ang_dia=response.data.ang_dia;
+					this.H_val=response.data.H_val;
+					this.lum_dist=response.data.lum_dist;
+					this.plot_1="data:image/png;base64,"+response.data.plot_1;
+					this.plot_2="data:image/png;base64,"+response.data.plot_2;
+					
+				})
+				.catch(e => {
+					console.log(e);
+				});
 		},
 		
 		hide_notification() {
@@ -131,7 +186,7 @@ var interface_disp = new Vue({
 
 	mounted() {
 		////////////////////
-
+		this.posting_stuff();
 
 
 
@@ -140,7 +195,7 @@ var interface_disp = new Vue({
 	},
 
 	updated() {
-	
+		this.other_curvatures();
 	},
 
 });

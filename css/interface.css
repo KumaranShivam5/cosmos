@@ -267,6 +267,26 @@
   z-index: 1;
 }
 
+::-webkit-scrollbar {
+  width: 7px;
+  background:#4682B4;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #4682B4; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(1, 50, 67, 0.7); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(1, 50, 67, 1); 
+}
+
 
 @media only screen and (orientation:portrait) {
 	.inpimg {
@@ -290,8 +310,12 @@
 		font-size: 5vw;
 	}
 	
+	.inpgrid-item {
+		font-size: 4vw;
+	}
+	
 	.inp-paratext {
-		font-size:5vw;
+		font-size:4vw;
 	}
 	
 	.inpheading{
@@ -314,9 +338,9 @@
 	
 	
 	.inpbutton {
-		width:15vw;
-		height:15vw;
-		font-size:8vw;
+		width:12vw;
+		height:12vw;
+		font-size:6vw;
 	}
 	
 	.op-textbox {

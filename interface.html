@@ -71,16 +71,10 @@
 				<div class="inpwrapper-children inpheading">
 					C O S M O L O G Y <br> C A L C U L A T O R <br>
 					<div class="inp-subtitle">" Our Place in The Universe "</div>
-					<!--thoda change yaha he...just for trial-->
-					<div onclick="trial_run()">
-					
-						<button class='inpbutton' v-on:click='calc_output'><i class="fas fa-arrow-right"></i></button>
+					<button class='inpbutton' v-on:click='calc_output'><i class="fas fa-arrow-right"></i></button>
 					
 					
-					</div>
-					
-					
-					<div class="inp-universe-status"> Open </div>
+					<div class="inp-universe-status"> {{om_k}} </div>
 				</div>
 	
 				<div class="inpwrapper-children inpgrid-container">
@@ -89,7 +83,7 @@
 					<div  class='inp-paratext'>How much of the critical density taken up by matter?</div>
 					<div class='inpinput-box'>
 						<div class='inpinput-label'>&Omega;<sub>m</sub></div>
-						<input type='text' class='inpinput-text' v-model='om_m' :value='om_m'></input>
+						<input type="text" class='inpinput-text' v-model='om_m' :value='om_m'></input>
 						<button class='inpinput-readmore' @click="maneover_modals(1)"><i class="far fa-comment-dots"></i></button>
 					</div>
 				</div>
@@ -158,10 +152,10 @@
 			<div class="op-textbox-wrapper">
 				<div class='op-textbox'>
 				You are Here.<br>
-				The year is: <span id="age">wait krlo thoda..</span><br>
-				The universe is : <span id="time"> </span> years old.<br>
-				Temperature outside is: <span id="temp"></span> <br>
-				You've travelled a comoving distance of: <span id="co_dist"></span><br>
+				The year is: {{look_back}}<br>
+				The universe is : {{age}} years old.<br>
+				Temperature outside is: {{cmb}} <br>
+				You've travelled a comoving distance of: {{com_dist}}<br>
 				<button class="op-detail" v-on:click='func_navigate(3)'>More</button>
 				</div>
 				<div class='rectangle'></div>
@@ -181,10 +175,11 @@
 			<div class="bkg-grad pub-grad"></div>
 			
 			<div class="maj-heading publ-heading">DETAILS
+				<!-- to get vue outputs just use variables like so...-->
+				 {{look_back}} {{age}} {{com_dist}} {{ang_dia}} {{lum_dist}}{{H_0}}{{cmb}}
 
-
-				<img id='plot_trial_01' src="">
-				<img id='plot_trial_02' src="">
+				<img :src="plot_1">
+				<img :src="plot_2">
 			</div>
 
 			<div class="number-pagination">
