@@ -99,7 +99,7 @@ import { GLTFLoader } from 'https://threejsfundamentals.org/threejs/resources/th
  */
 
  var wire_mat = new THREE.MeshBasicMaterial( {
-    color: "#4fffca", wireframe: true, transparent: false
+    color: "#4fffca", wireframe: false, transparent: false
 })
 
 var cmb = new THREE.Object3D
