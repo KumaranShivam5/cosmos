@@ -74,10 +74,9 @@
 
 /* Modal Content */
 .inp-modal-content {
-  background-color: #f5f5dc;
+  background-image: url("modal.png");
   margin: auto;
   padding: 20px;
-  border: 1px solid #888;
   width: 80%;
   height:80%
 }
@@ -109,21 +108,25 @@
 	width:30%;
 	height:100%;
 	font-size:5vh;
-	border-right:2px solid #f88379;
+	border-right:2px solid white;
 }
 
 .inp-modal-content-heading {
 	position:absolute; 
 	left:12%; 
-	color:#f88379;
+	color:white;
 	bottom:30%;
 	width:18%;
 }
 
 .inp-modal-content-para{
 	width:70%;
+	display:flex;
+	flex-direction:column;
+	height:110%;
+	background-image: linear-gradient(to right, rgba(255,255,255,0.6) , rgba(255,255,255,0));
 	justify-content: space-between;
-	color:'#a9a9a9';
+	color:black;
 	padding:10px;
 }
 

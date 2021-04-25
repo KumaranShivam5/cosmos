@@ -161,32 +161,37 @@ var interface_disp = new Vue({
 			this.description_modal=true;
 			switch(i)	{
 			case 1:this.modal_heading="MATTER DENSITY PARAMETER";
-				   this.modal_content=" The density parameter, Ω, is defined as the ratio of the actual (or observed) density ρ to the critical density ρc."+
-				   "For any quantity x the corresponding density parameter,it is Ωb=ρb/ρc";
+				   this.modal_content="The critical density is the density required to halt the expansion of the universe. i.e, just the right amount of matter and "+ 
+				   "radiation and everything else to stop the universe from expanding. This parameter is a measure of how much of that density is taken up by matter. This includes all"+
+				   " the atoms and molecules that make up the universe, along with the elusive dark matter.";
 					break;
 			case 2:this.modal_heading="REDSHIFT";
-					this.modal_content="Shift in wavelength of light due to relative motion betwee the observer and the source.";
+					this.modal_content="As everything in the universe moves away from everything else, the photons emitted from such stuff undergo redshift, i.e. the frequency "+
+					"we observe them at is redder than what was emitted, or at a lower frequency. Thus this parameter is a measure of how much deviation from the actual frequency "+
+					"or wavelength we observe.";
 					break;
 			case 3:this.modal_heading="DARK ENERGY DENSITY PARAMETER";
-				   this.modal_content=" The density parameter, Ω, is defined as the ratio of the actual (or observed) density ρ to the critical density ρc."+
-				   "For any quantity x the corresponding density parameter,it is Ωb=ρb/ρc";
+				   this.modal_content="The critical density is the density required to halt the expansion of the universe. i.e, just the right amount of matter and "+ 
+				   "radiation and everything else to stop the universe from expanding. This parameter is a measure of how much of that density is taken up by dark energy. This was introduced"+
+				   " in order to explain why the universe we live in is flat, despite it not having enough substance to make it so.";
 					break;
-			case 4:this.modal_heading="RADIATION";
-				   this.modal_content=" The density parameter, Ω, is defined as the ratio of the actual (or observed) density ρ to the critical density ρc."+
-				   "For any quantity x the corresponding density parameter,it is Ωb=ρb/ρc";
+			case 4:this.modal_heading="RADIATION DENSITY PARAMETER";
+				   this.modal_content="The critical density is the density required to halt the expansion of the universe. i.e, just the right amount of matter and "+ 
+				   "radiation and everything else to stop the universe from expanding. This parameter is a measure of how much of that density is taken up by radiation.";
 					break;
 			case 5:this.modal_heading="HUBBLE'S CONSTANT";
-				   this.modal_content="The Hubble constant is a unit that describes how fast the universe is expanding at different distances from a particular point in space."+
-				   "All of the galaxies in the universe appeared to be moving away from our planet. Furthermore, the farther a galaxy was, the faster it was receding."+ 
-				   "This observation, which Hubble made in 1929, became the basis for what's known as Hubble's law, which states that there is a relationship between the distance an object in the cosmos is from us and the speed at which it is receding";
+				   this.modal_content="The Hubble constant is a unit that describes how fast the universe is expanding at different distances from a particular point in space. "+
+				   "All of the galaxies in the universe appeared to be moving away from our planet. Furthermore, the farther a galaxy was, the faster it was receding. "+ 
+				   "This observation, which Hubble made in 1929, became the basis for what's known as Hubble's law, which states that there is a relationship between the distance "+ 
+				   "an object in the cosmos is from us and the speed at which it is receding";
 					break;
 			case 6:this.modal_heading="COSMIC MICROWAVE BACKGROUND";
 				   this.modal_content="According to Big Bang theory, temperatures and pressures for the first ~300,000 years of the Universe were such that atoms could not exist."+
-				   "Matter was instead distributed as a highly ionised plasma which was very efficient at scattering radiation. The result was that information (photons) from the"+ 
-				   "early Universe were effectively trapped in an inpenetrable ‘fog’ which, to this day, hides these early times from astronomers."+
-				   "As the Universe expanded, however, its temperature and density dropped to a point where the atomic nuclei and electrons were able to combine to form atoms."+ 
-				   "This is known as the epoch of recombination, and it is at this time that photons were finally able to escape the fog of the early Universe and travel freely."+
-				   "The Cosmic Microwave Background radiation (CMB) is the record of these photons at the moment of their escape.";
+				   "Matter was instead distributed as a highly ionised plasma which was very efficient at scattering radiation. The result was that information (photons) from the "+ 
+				   "early Universe were effectively trapped in an inpenetrable ‘fog’ which, to this day, hides these early times from astronomers. "+
+				   "As the Universe expanded, however, its temperature and density dropped to a point where the atomic nuclei and electrons were able to combine to form atoms. "+ 
+				   "This is known as the epoch of recombination, and it is at this time that photons were finally able to escape the fog of the early Universe and travel freely. "+
+				   "The Cosmic Microwave Background radiation (CMB) is the record of these photons at the moment of their escape. ";
 					break;
 			
 			}
