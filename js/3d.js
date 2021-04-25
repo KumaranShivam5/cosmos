@@ -46,7 +46,7 @@ renderer.setClearColor("#222222", 0)
 var canvas = document.getElementById('viewport');
 
 stats = new Stats();
-canvas.appendChild(stats.dom);
+//canvas.appendChild(stats.dom);
 
 clock = new THREE.Clock();
 
@@ -214,7 +214,7 @@ for(i=0;i<N_star;i++){
 
 
 
-
+/*
 
 const gui = new GUI();
 
@@ -242,7 +242,7 @@ gui.add(params, 'bloomRadius', 0.0, 1.0).step(0.01).onChange(function (value) {
 
 });
 
-
+*/
 
 window.addEventListener('resize', () => {
     let width = window.innerWidth

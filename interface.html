@@ -146,9 +146,18 @@
 
 		<!-- Slider #2 -->
 		<div class="slider slide-2" id="s2">
+
 			<div id="viewport">
 
+				<!--
+					
+				-->
+			
+		
+
+
 			</div>
+			
 			<img class="bkgimg" src="images/3.jpg" alt="">
 			<div class="op-textbox-wrapper">
 				<div class='op-textbox'>
@@ -217,9 +226,8 @@
 
 </body>
 
-<!--
 
-
+<script src="js/3d.js" type='module'></script>
 <script>
 
 function trial_run(){
@@ -265,6 +273,7 @@ $('#plot_trial_02').attr('src' , plot_02);
 </script>
 
 <script type="text/javascript">
+/*
 particlesJS("particles-js", {
 	"particles":{"number":{
 		"value":200,
@@ -287,6 +296,7 @@ particlesJS("particles-js", {
 			"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true}
 			
 	);
+	*/
 	
 particlesJS("particles-js2", {
 	"particles":{"number":{
@@ -303,7 +313,7 @@ particlesJS("particles-js2", {
 	},}
 			
 	);
-			
+			/*
 			var count_particles, pstats, update;
 			pstats = new Stats; 
 			pstats.setMode(0);
@@ -315,14 +325,9 @@ particlesJS("particles-js2", {
 			update = function() { pstats.begin(); pstats.end();
 			if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } 
 			requestAnimationFrame(update); };
-			requestAnimationFrame(update);;
+			requestAnimationFrame(update);
+			*/
 </script>
-
-
--->
-
-
-<script type='module' src="js/3d.js"></script>
 
 
 
