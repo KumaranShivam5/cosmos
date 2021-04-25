@@ -26,8 +26,8 @@ var interface_disp = new Vue({
 		//flag_activate: false,
 		description_modal:false,
 		description_curve:"flat",
-		modal_heading:[],
-		modal_content:[],
+		modal_heading: "Welcome",
+		modal_content: "Ushasi and Kumaran's Cosmology Calculator",
 		notification:[],
 		year:0
 		
@@ -67,7 +67,6 @@ var interface_disp = new Vue({
 		other_curvatures() {
 			this.om_k=1-parseFloat(this.om_v)-parseFloat(this.om_m)-parseFloat(this.om_r);
 			var temp=this.om_k.toFixed(6);
-			console.log(temp);
 			if(temp>0) this.description_curve="Open";
 			if(temp<0) this.description_curve="Closed";
 			if(temp==0) this.description_curve="Flat";
@@ -107,8 +106,10 @@ var interface_disp = new Vue({
 					this.plot_2="data:image/png;base64,"+response.data.plot_2;
 					
 					this.year=this.look_back-2021;
-					if(this.year>0)	this.year=toString(this.year)+"BC";
-					else this.year=toString(this.year)+"AD";
+					toString(this.year);
+					console.log(this.year);
+					if(this.year>0)	this.year=JSON.stringify(this.year)+" BC";
+					else this.year=JSON.stringify(-this.year)+" AD";
 					
 				})
 				.catch(e => {
@@ -208,6 +209,8 @@ var interface_disp = new Vue({
 
 	updated() {
 		this.other_curvatures();
+		total_age_of_universe=this.age+this.lookback;
+		age_where_we_are=this.age;
 	},
 
 });

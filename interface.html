@@ -31,7 +31,6 @@
 
 	<!--essential scripts-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.0/vue.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -43,6 +42,8 @@
 	<script src="https://kit.fontawesome.com/b1edde977d.js" crossorigin="anonymous"></script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r127/three.module.js"></script>
+	
+	<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
 
 </head>
 
@@ -65,7 +66,7 @@
 		<!-- Slider #1 -->
 		<div class="slider slide-1" id="s1">
 			<img class="inpimg" src="css/inp-back3.jpg" alt="">
-			<canvas class="background"></canvas>
+			<div id="particles-js2" class="background"></div>
 			
 			<div class='inpwrapper'>
 				<div class="inpwrapper-children inpheading">
@@ -145,7 +146,12 @@
 
 		<!-- Slider #2 -->
 		<div class="slider slide-2" id="s2">
+<<<<<<< Updated upstream
 			<div id="viewport">
+=======
+			<div id="particles-js" class="background"></div>
+			<canvas id="grid_display">
+>>>>>>> Stashed changes
 
 			</div>
 			<img class="bkgimg" src="images/3.jpg" alt="">
@@ -213,25 +219,12 @@
 	</div>
 
 	<script src="js/interface.js"></script>
-	
-	<script>
-		var particles = Particles.init({
-		selector: '.background',
-		maxParticles: 400,
-		sizeVariations: 2,
-		speed: 0.3,
-		color:['white', '#4682B4','#FCA3B7']
-		});
-	</script>
 
 </body>
 
 
 
 <script>
-
-	
-
 
 function trial_run(){
 
@@ -275,10 +268,165 @@ $('#plot_trial_02').attr('src' , plot_02);
 
 </script>
 
+<script type="text/javascript">
+particlesJS("particles-js", {
+	"particles":{"number":{
+		"value":200,
+		"density":{"enable":true,"value_area":800}},
+		"color":{"value":['#ffffff', '#4682B4']},
+		"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},
+			"polygon":{"nb_sides":5},
+			"image":{"src":"img/github.svg","width":100,"height":100}},
+		"opacity":{"value":1,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},
+		"size":{"value":2,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},
+		"line_linked":{"enable":false,"distance":150,"color":"#ffffff","opacity":0.3,"width":1},
+		"move":{"enable":true,"speed":2,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}
+	},
+		
+	"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"repulse"},
+			"onclick":{"enable":false,"mode":"push"},"resize":true},
+			"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},
+			"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},
+			"repulse":{"distance":200,"duration":0.4},
+			"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true}
+			
+	);
+	
+particlesJS("particles-js2", {
+	"particles":{"number":{
+		"value":300,
+		"density":{"enable":true,"value_area":800}},
+		"color":{"value":['#ffffff', '#4682B4','#FCA3B7']},
+		"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},
+			"polygon":{"nb_sides":5},
+			"image":{"src":"img/github.svg","width":100,"height":100}},
+		"opacity":{"value":1,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},
+		"size":{"value":2,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.05,"sync":false}},
+		"line_linked":{"enable":false,"distance":150,"color":"#ffffff","opacity":0.3,"width":1},
+		"move":{"enable":true,"speed":1,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}
+	},}
+			
+	);
+			
+			var count_particles, pstats, update;
+			pstats = new Stats; 
+			pstats.setMode(0);
+			pstats.domElement.style.position = 'absolute';
+			pstats.domElement.style.left = '0px'; 
+			pstats.domElement.style.top = '0px';
+			document.body.appendChild(pstats.domElement); 
+			count_particles = document.querySelector('.js-count-particles'); 
+			update = function() { pstats.begin(); pstats.end();
+			if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } 
+			requestAnimationFrame(update); };
+			requestAnimationFrame(update);;
+</script>
 
 
-
+<<<<<<< Updated upstream
 <script type='module' src="js/3d.js"></script>
+=======
+
+
+
+
+<script>
+
+var test_var=3.3333;
+
+
+const SCREEN_WIDTH = window.innerWidth;
+const SCREEN_HEIGHT = window.innerHeight;
+
+let container, stats;
+let camera, scene, renderer;
+
+init();
+animate();
+
+function init() {
+
+	container = document.createElement( 'div' );
+	document.getElementById('grid_display').appendChild( container );
+
+	// CAMERA
+
+	camera = new THREE.PerspectiveCamera( 40, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000 );
+	camera.position.set( 700, 200, - 500 );
+
+	// SCENE
+
+	scene = new THREE.Scene();
+
+	// LIGHTS
+
+	const light = new THREE.DirectionalLight( 0xaabbff, 0.3 );
+	light.position.x = 300;
+	light.position.y = 250;
+	light.position.z = - 500;
+	scene.add( light );
+
+	
+
+	// RENDERER
+
+	renderer = new THREE.WebGLRenderer( { antialias: true } );
+	renderer.setPixelRatio( window.devicePixelRatio );
+	renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
+	container.appendChild( renderer.domElement );
+	renderer.outputEncoding = THREE.sRGBEncoding;
+
+	// CONTROLS
+
+	const controls = new OrbitControls( camera, renderer.domElement );
+	controls.maxPolarAngle = 0.9 * Math.PI / 2;
+	controls.enableZoom = false;
+
+	// STATS
+
+	stats = new Stats();
+	container.appendChild( stats.dom );
+
+	// MODEL
+
+	const loader = new THREE.ObjectLoader();
+	loader.load( "models/cmb.obj", function ( object ) {
+
+		scene.add( object );
+
+	} );
+
+	//
+
+	window.addEventListener( 'resize', onWindowResize );
+
+}
+
+function onWindowResize() {
+
+	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.updateProjectionMatrix();
+
+	renderer.setSize( window.innerWidth, window.innerHeight );
+
+}
+
+//
+
+function animate() {
+
+	requestAnimationFrame( animate );
+
+	renderer.render( scene, camera );
+	stats.update();
+
+}
+
+
+</script>
+
+
+>>>>>>> Stashed changes
 
 
 
