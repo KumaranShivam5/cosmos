@@ -201,8 +201,8 @@ for(i=0 ; i<N_star ; i++){
     star = new THREE.Mesh( star_geom , star_material );
     //star.position.x = Math.random() * 200 - 250 ;
     //star.position.y = Math.random() * 200 -100  ;
-    star.position.x = randn_bm() * 50 - 120 ;
-    star.position.y = randn_bm() * 10 - 5  ;
+    star.position.x = randn_bm() * 30 - 120 ;
+    star.position.y = randn_bm() * 30 - 5  ;
 
     star_arr.push(star)
 }
