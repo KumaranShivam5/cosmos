@@ -203,6 +203,7 @@ for(i=0 ; i<N_star ; i++){
     //star.position.y = Math.random() * 200 -100  ;
     star.position.x = randn_bm() * 30 - 120 ;
     star.position.y = randn_bm() * 30 - 5  ;
+    star.position.z = randn_bm() * 30   ;
 
     star_arr.push(star)
 }
