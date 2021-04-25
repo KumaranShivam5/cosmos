@@ -15,47 +15,39 @@ import { EffectComposer } from 'https://threejsfundamentals.org/threejs/resource
 import { RenderPass } from 'https://threejsfundamentals.org/threejs/resources/threejs/r127/examples/jsm/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'https://threejsfundamentals.org/threejs/resources/threejs/r127/examples/jsm/postprocessing/UnrealBloomPass.js';
 
-let composer, stats, clock ; 
+let composer
 
 const params = {
-    exposure: 1.2,
-    bloomStrength: 1.1,
+    exposure: 1,
+    bloomStrength: 1.5,
     bloomThreshold: 0,
-    bloomRadius: 1.0
+    bloomRadius: 0
 };
 
 
 const scene = new THREE.Scene()
-const camera = new THREE.PerspectiveCamera( 45 , window.innerWidth / window.innerHeight, 0.1, 1000 )
+//const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 )
 
 var width = window.innerWidth;
 var height = window.innerHeight;
-
-//const camera = new THREE.OrthographicCamera(width / - 2, width / 2, height / 2, height / - 2, 1, 10000000);
-
-
+const camera = new THREE.OrthographicCamera(width / - 2, width / 2, height / 2, height / - 2, 1, 1000);
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
 
 renderer.setSize(window.innerWidth, window.innerHeight)
 // sets renderer background color
 renderer.setClearColor("#222222", 0)
-//renderer.toneMapping = THREE.ReinhardToneMapping;
+renderer.toneMapping = THREE.ReinhardToneMapping;
 
 
 
 var canvas = document.getElementById('viewport');
-
-stats = new Stats();
-canvas.appendChild(stats.dom);
-
-clock = new THREE.Clock();
 
 canvas.appendChild(renderer.domElement);
 
 
 
 //document.body.appendChild( renderer.domElement )
-camera.position.z = 600
+camera.position.z = 5
 
 
 
@@ -98,7 +90,22 @@ composer.addPass(bloomPass);
 
 // resize canvas on resize window
 
+// basic cube
+var geometry = new THREE.BoxGeometry(1, 1, 1)
+var material = new THREE.MeshStandardMaterial({ color: 0xff0051, flatShading: true, metalness: 0, roughness: 1 })
+var cube = new THREE.Mesh(geometry, material)
+scene.add(cube)
 
+// wireframe cube
+var geometry = new THREE.BoxGeometry(3, 3, 3)
+var material = new THREE.MeshBasicMaterial({
+    color: "#dadada", wireframe: true, transparent: true
+})
+
+
+
+var wireframeCube = new THREE.Mesh(geometry, material)
+scene.add(wireframeCube)
 
 // ambient light
 var ambientLight = new THREE.AmbientLight(0xffffff, 0.2)
@@ -136,10 +143,6 @@ var bb_light = new THREE.PointLight('#ff1100', 100, 0);
 bb_light.position.set(-width / 6, 0, 0);
 scene.add(bb_light);
 
-var bb_cold_light = new THREE.PointLight('#1111ff', 100, 0);
-bb_cold_light.position.set(width / 6, 0, 0);
-scene.add(bb_cold_light);
-
 
 
 var cmb = new THREE.Object3D
@@ -157,89 +160,14 @@ var cmb = new THREE.Object3D
 
 
         cmb = root;
-        cmb.scale.set(1, 1, 1);
-        cmb.position.set(-0.05*width, 0, 0)
+        cmb.scale.set(2.8, 2.8, 2.8);
+        cmb.position.set(-width / 6, 0, 0)
 
 
         scene.add(cmb);
     });
 }
 
-// adding position plane
-
-const ring_geometry = new THREE.RingGeometry( 160, 200, 64 );
-const ring_mat = new THREE.MeshStandardMaterial( { color: 0xffff00, side: THREE.DoubleSide } );
-const ring = new THREE.Mesh( ring_geometry, ring_mat );
-ring.rotation.y= -Math.PI/2;
-ring.position.x = -80 
-scene.add( ring );
-
-
-const bb_center_geom = new THREE.SphereGeometry( 10, 32, 32 );
-const bb_center_material = new THREE.MeshStandardMaterial( {color: 0xffff00} );
-const bb_center = new THREE.Mesh( bb_center_geom, bb_center_material );
-bb_center.position.x = -200 ;
-scene.add( bb_center );
-
-
-// position plane ends here
-const star_material = new THREE.MeshStandardMaterial( {color: 0xffff00} );
-let star , star_geom , star_arr = []
-var N_star = 1000
-var i;
-
-function randn_bm() {
-    var u = 0, v = 0;
-    while(u === 0) u = Math.random(); //Converting [0,1) to (0,1)
-    while(v === 0) v = Math.random();
-    return Math.sqrt( -2.0 * Math.log( u ) ) * Math.cos( 2.0 * Math.PI * v );
-}
-
-
-for(i=0 ; i<N_star ; i++){
-    star_geom = new THREE.SphereGeometry( 1 , 16, 16 );
-    star = new THREE.Mesh( star_geom , star_material );
-    //star.position.x = Math.random() * 200 - 250 ;
-    //star.position.y = Math.random() * 200 -100  ;
-    star.position.x = randn_bm() * 50 - 120 ;
-    star.position.y = randn_bm() * 10 - 5  ;
-
-    star_arr.push(star)
-}
-
-for(i=0;i<N_star;i++){
-    scene.add(star_arr[i]);
-}
-
-
-
-
-
-const gui = new GUI();
-
-gui.add(params, 'exposure', 0.1, 2).onChange(function (value) {
-
-    renderer.toneMappingExposure = Math.pow(value, 4.0);
-
-});
-
-gui.add(params, 'bloomThreshold', 0.0, 1.0).onChange(function (value) {
-
-    bloomPass.threshold = Number(value);
-
-});
-
-gui.add(params, 'bloomStrength', 0.0, 3.0).onChange(function (value) {
-
-    bloomPass.strength = Number(value);
-
-});
-
-gui.add(params, 'bloomRadius', 0.0, 1.0).step(0.01).onChange(function (value) {
-
-    bloomPass.radius = Number(value);
-
-});
 
 
 
@@ -259,9 +187,8 @@ function animate() {
     requestAnimationFrame(animate)
     cmb.rotation.x += 0.002;
     //cmb.rotation.y += 0.04;
-   
-    //stats.update();
-    renderer.render(scene, camera);
-    composer.render();
+    wireframeCube.rotation.x -= 0.01;
+    wireframeCube.rotation.y -= 0.01;
+    renderer.render(scene, camera)
 }
 animate()
