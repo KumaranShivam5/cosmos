@@ -140,7 +140,7 @@
 		width:95%;
 		height:auto;
 		font-size:7vw;
-		border-bottom:2px solid #f88379;
+		border-bottom:2px solid white;
 		border-right:none;
 	}
 	
@@ -152,10 +152,13 @@
 	}
 	
 	.inp-modal-content-para{
-		width:100%;
+		width:110%;
 		height:55%;
+		font-size:4vw;
 		overflow-y:scroll;
-		padding:2px;
+		padding:5px;
+		margin-left:15px;
+		background-image: linear-gradient(to bottom, rgba(255,255,255,0.6) , rgba(255,255,255,0));
 	}
 	
 }

@@ -42,7 +42,12 @@
 	<script src="https://kit.fontawesome.com/b1edde977d.js" crossorigin="anonymous"></script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r127/three.module.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>-->
+	<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+	<link rel="stylesheet" href="css/page_03.css" class="stylesheet">
+	
+	
+
 
 </head>
 
@@ -65,7 +70,7 @@
 		<!-- Slider #1 -->
 		<div class="slider slide-1" id="s1">
 			<img class="inpimg" src="css/inp-back3.jpg" alt="">
-			<canvas class="background"></canvas>
+			<div class="background" id="particles-js"></div>
 			
 			<div class='inpwrapper'>
 				<div class="inpwrapper-children inpheading">
@@ -181,21 +186,94 @@
 		
 		<!-- Slider #3 -->
 		<div class="slider slide-3" id="s3">
-			<div class="bkg-grad pub-grad"></div>
-			
-			<div class="maj-heading publ-heading">DETAILS
-				<!-- to get vue outputs just use variables like so...-->
-				 {{look_back}} {{age}} {{com_dist}} {{ang_dia}} {{lum_dist}}{{H_0}}{{cmb}}
+			<div class="t_main">
+				<div class="t_top_panel">
+					<div class="param_card" v-on:click="func_navigate(2)">
+						<i class="far fa-arrow-alt-circle-left"></i>
+					</div>
+					<div class="param_card">
+						Z <br> {{z}}
+					</div>
+					<div class="param_card">
+						&Omega;<sub>&lambda;</sub> : {{om_v}}
+					</div>
+					<div class="param_card">
+						&Omega;<sub>r</sub>: {{om_r}}
+					</div>
+					<div class="param_card">
+						&Omega;<sub>m</sub>: {{om_m}}
+					</div>
+					<div class="param_card">
+						&Omega;<sub>k</sub>: {{om_k}}
+					</div>
+					<div class="param_card">
+						H<sub>0</sub> : {{H_0}}
+					</div>
+					<div class="param_card">
+						T<sub>0</sub> : {{T_0}}
+					</div>
+				</div>
+				<div class="some_info">
+					If the Cosmic Microwave Background radiation were absolutely homogenous and isotropic, there would have been no regions with a reason to clump together
+					and form the galaxies and stars we see today.					
+				</div>
+				<div class="t_mid_plot_panel">
+					<div class="plot_container">
+						<div class="plot_image_wrap">
 
-				<img :src="plot_1">
-				<img :src="plot_2">
-			</div>
+							<img id="plot_card_01" :src="plot_1" class='plot_card'>
+							<img id="plot_card_02" :src="plot_2" class='plot_card'>
+						</div>
+						<div class="plot_caption">First Panel is a plot of how the different distances are different from each other. <br>
+						Second panel shows how the density of various components that make up the universe vary with redshift.</div>
+					</div>
 
-			<div class="number-pagination">
-				<span>
-					<font color="white">3</font>
-				</span>
-			</div>
+				</div>
+				<div class="t_main_display">
+					<div id="cmb_viewport" class="viewport_window">
+
+						<div class="sketchfab-embed-wrapper">
+							<iframe title="Cmb" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="fullscreen; autoplay;" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/1b5413944ac34d84bc028543bb78fa92/embed?autospin=0&autostart=1&preload=1&ui_hint=1&ui_theme=dark">
+							</iframe>
+						</div>
+					</div>
+					<div class="viewport_options_panel">
+						<div class="view_option">
+							<img src="images/cmb_thumb_01.jpeg" alt="" class="cmb_thumb">
+						</div>
+						<div class="view_option">
+							<img src="images/cmb_thumb_02.jpeg" alt="" class="cmb_thumb">
+						</div>
+						<div class="view_option">
+							<img src="images/cmb_thumb_05.jpeg" alt="" class="cmb_thumb">
+						</div>
+						<div class="view_option">
+							<img src="images/cmb_thumb_04.jpeg" alt="" class="cmb_thumb">
+						</div>
+					</div>
+				</div>
+				<div class="t_bottom_panel">
+					<div class='output_details_wrap'>
+						Age Of Universe: {{age}} yrs<br>
+						Lookback Time: {{look_back}} yrs<br>
+						Temperature:{{cmb}} K <br>
+						Hubble Constant: {{H_val}} km/s/Mpc
+					</div>
+					<div class='output_details_wrap'>
+						Comoving Distance:{{com_dist}} Mpc<br>
+						Angular Diameter Distance: {{ang_dia}} Mpc<br>
+						Luminosity Distance:{{lum_dist}} Mpc
+					</div>
+					<div class='output_details_wrap team'>
+						Website Designed and developed by 
+						<br> ---------------------
+						<br> Ushasi and Kumaran 
+						<br>
+						---------------------
+					</div>
+            
+        </div>
+    </div>
 		</div>
 		
 		<!--popup -->
@@ -223,7 +301,7 @@
 
 	<script src="js/interface.js"></script>
 	
-	<script>
+	<!--<script>
 window.onload= function() {Particles.init({
 		selector: '.background',
 		maxParticles: 500,
@@ -231,11 +309,38 @@ window.onload= function() {Particles.init({
 		speed: 0.3,
 		color:["white","#4682B4","#fc6c85"]
   });
-};</script>
+};
+</script>-->
+
+<script type="text/javascript">
+particlesJS("particles-js", 
+{"particles":{"number":{"value":300,"density":{"enable":true,"value_area":800}},
+"color":{"value":["#ffffff","#4682B4","#fc6c85"]},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},
+"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},
+"opacity":{"value":0.75,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},
+"size":{"value":2,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.05,"sync":false}},
+"line_linked":{"enable":false,"distance":150,"color":"#ffffff","opacity":0.3,"width":1},
+"move":{"enable":true,"speed":1,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,
+"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"repulse"},
+"onclick":{"enable":false,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},
+"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},
+"remove":{"particles_nb":2}}},"retina_detect":true});
+
+var count_particles, stats, update; 
+stats = new Stats;
+stats.setMode(0); 
+stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px';
+ stats.domElement.style.top = '0px'; document.body.appendChild(stats.domElement); 
+ count_particles = document.querySelector('.js-count-particles'); 
+ update = function() { stats.begin(); stats.end(); 
+ if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { 
+ count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } requestAnimationFrame(update); };
+ requestAnimationFrame(update);;
+</script>
 
 </body>
 
-
+	
 
 <script src="js/3d.js" type='module'></script>
 

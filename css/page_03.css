@@ -16,6 +16,7 @@ body {
     display: grid;
     width: 100%;
     height: 100vh;
+	overflow-y:scroll;
     /*! overflow-x: hidden; */
 }
 
@@ -41,7 +42,7 @@ body {
     display: grid;
     flex-direction: row;
     /*! grid-gap: 8px; */
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 .param_card {
 
@@ -92,6 +93,8 @@ body {
 
     grid-area: footer;
     display: flex;
+	font-size:1vw;
+	margin-left:10vw;
     align-items: center;
     justify-content: space-between;
 }
@@ -124,6 +127,7 @@ only grid properties here
     grid-area: some_info;
     display: flex;
     align-items: center;
+	font-size:1vw;
     justify-content: center;
     color: #c830ff;
 }
