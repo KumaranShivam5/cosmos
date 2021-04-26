@@ -1,16 +1,17 @@
 * {
     box-sizing: border-box;
-  }
-  
-body{
-    margin:0px;
-    padding:0px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
     background: black;
     width: 100vw;
     color: white;
+    font-family: 'Montserrat', sans-serif ;
 }
 
-.t_main{
+.t_main {
 
     display: grid;
     width: 100%;
@@ -19,18 +20,18 @@ body{
 }
 
 
-.grad_box{
-    background: rgb(0,37,69);
-background: linear-gradient(294deg, rgba(0,37,69,1) 0%, rgba(150,150,189,0.26512611880689774) 35%, rgba(51,0,57,1) 100%);
+.grad_box {
+    background: rgb(0, 37, 69);
+    background: linear-gradient(294deg, rgba(0,37,69,1) 0%, rgba(150,150,189,0.26512611880689774) 35%, rgba(51,0,57,1) 100%);
 }
 
 
-.t_main > *{
-    border:1px solid #00a8db;
+.t_main > * {
+    border: 1px solid #00a8db;
     /*! border-radius: 5px; */
 }
 
-.t_top_panel{
+.t_top_panel {
 
     grid-area: parameter_panel;
     width: 100%;
@@ -42,7 +43,7 @@ background: linear-gradient(294deg, rgba(0,37,69,1) 0%, rgba(150,150,189,0.26512
     /*! grid-gap: 8px; */
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
-.param_card{
+.param_card {
 
     display: block;
     background: #262626;
@@ -53,12 +54,17 @@ background: linear-gradient(294deg, rgba(0,37,69,1) 0%, rgba(150,150,189,0.26512
     /*! border-left: 1px solid aqua; */
     /*! border-right: 1px solid aqua; */
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 2.0;
 }
-.t_mid_plot_panel{
+.t_mid_plot_panel {
 
     grid-area: plot_panel;
 }
-.plot_container{
+.plot_container {
 
     display: flex;
     flex-direction: column;
@@ -68,33 +74,34 @@ background: linear-gradient(294deg, rgba(0,37,69,1) 0%, rgba(150,150,189,0.26512
     height: 100%;
 }
 
-.plot_card{
+.plot_card {
 
     width: 50%;
     /*! height: 100%; */
     /*! align-items: center; */
     /*! justify-content: center; */
 }
-.t_main_display{
+.t_main_display {
 
     grid-area: graphic_panel;
+    display: flex;
+    flex-direction: row;
+    width: 42vw;
 }
-.t_bottom_panel{
+.t_bottom_panel {
 
     grid-area: footer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-.info_card{
+.info_card {}
+.team_info {}
+.plot_image_wrap {
 
-}
-.team_info{
-    
-}
-.plot_image_wrap{
-    
     display: flex;
 }
-.plot_caption{}
-
+.plot_caption {}
 
 
 /*
@@ -102,24 +109,92 @@ only grid properties here
 */
 
 .t_main {
-  display: grid;
-  grid-template-columns: 1fr 0.6fr 1.2fr;
-  grid-template-rows: 0.4fr 2fr 0.6fr;
-  gap: 1vw 1vw;
-  grid-template-areas:
-    "parameter_panel parameter_panel some_info"
-    "plot_panel plot_panel graphic_panel"
-    "footer footer footer";
+    display: grid;
+    grid-template-columns: 1fr 0.6fr 1.2fr;
+    grid-template-rows: 0.4fr 2fr 0.6fr;
+    gap: 1vw 1vw;
+    min-width: 25vw;
+    max-width: 100vw;
+    grid-template-areas: "parameter_panel parameter_panel some_info" "plot_panel plot_panel graphic_panel" "footer footer footer";
 }
-.parameter_panel { grid-area: parameter_panel; }
-.some_info { grid-area: some_info; }
-.plot_panel { grid-area: plot_panel; }
-.graphic_panel { grid-area: graphic_panel; }
-.footer { grid-area: footer; }
+.parameter_panel {
+    grid-area: parameter_panel;
+}
+.some_info {
+    grid-area: some_info;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #c830ff;
+}
+.plot_panel {
+    grid-area: plot_panel;
+}
+.graphic_panel {
+    grid-area: graphic_panel;
+}
+.footer {
+    grid-area: footer;
+}
 
 
-
-#cmb_viewport{
-    width: 25vw;
+#cmb_viewport {
+    width: 80%;
     height: 100%;
+    min-width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.viewport_options_panel{
+    
+    width: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.view_option{
+    
+    /*! width: 100%; */
+    margin: 10px;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #014437;
+    padding: 5px;
+}
+
+.output_details_wrap{
+    
+    margin-left: 2%;
+    color: #4efde4;
+    padding-left: 20px;
+    border-left: 1px solid;
+    padding-right: 20px;
+    border-right: 1px solid;
+    margin: 2%;
+    /*! text-align: ; */
+}
+
+.sketchfab-embed-wrapper{
+    width: 100%;
+    height: 100%;
+}
+
+.sketchfab-embed-wrapper > iframe{
+    width: 100%;
+    height: 100%;
+}
+.team{
+    
+    color: white;
+    text-align: center;
+}
+
+.cmb_thumb{
+    
+    width: 100%;
+    object-fit: contain;
 }

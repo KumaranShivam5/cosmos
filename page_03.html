@@ -23,12 +23,28 @@
 <body>
     <div class="t_main">
         <div class="t_top_panel">
-            <div class="param_card"></div>
-            <div class="param_card"></div>
-            <div class="param_card"></div>
-            <div class="param_card"></div>
-            <div class="param_card"></div>
-            <div class="param_card"></div>
+            <div class="param_card">
+                <i class="far fa-arrow-alt-circle-left"></i>
+            </div>
+            <div class="param_card">
+                Z <br> 1.5 
+            </div>
+            <div class="param_card">
+                &Omega;<sub>&lambda;</sub>
+            </div>
+            <div class="param_card">
+                &Omega;<sub>r</sub>
+            </div>
+            <div class="param_card">
+                H<sub>0</sub>
+            </div>
+            <div class="param_card">
+                T<sub>0</sub><br>
+                278 K
+            </div>
+        </div>
+        <div class="some_info">
+            some info about Cosmological microwave background anisotropy .
         </div>
         <div class="t_mid_plot_panel">
             <div class="plot_container">
@@ -44,20 +60,51 @@
 
         </div>
         <div class="t_main_display">
-            <div id="cmb_viewport" class="viewport_window"></div>
+            <div id="cmb_viewport" class="viewport_window">
+
+                <div class="sketchfab-embed-wrapper">
+                    <iframe title="Cmb" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="fullscreen; autoplay;" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/1b5413944ac34d84bc028543bb78fa92/embed?autospin=0&autostart=1&preload=1&ui_hint=1&ui_theme=dark">
+                    </iframe>
+                </div>
+            </div>
             <div class="viewport_options_panel">
-                <div class="view_option"></div>
-                <div class="view_option"></div>
-                <div class="view_option"></div>
-                <div class="view_option"></div>
+                <div class="view_option">
+                    <img src="images/cmb_thumb_01.jpeg" alt="" class="cmb_thumb">
+                </div>
+                <div class="view_option">
+                    <img src="images/cmb_thumb_02.jpeg" alt="" class="cmb_thumb">
+                </div>
+                <div class="view_option">
+                    <img src="images/cmb_thumb_05.jpeg" alt="" class="cmb_thumb">
+                </div>
+                <div class="view_option">
+                    <img src="images/cmb_thumb_04.jpeg" alt="" class="cmb_thumb">
+                </div>
             </div>
         </div>
         <div class="t_bottom_panel">
-            <div class="info_card"></div>
-            <div class="info_card"></div>
-            <div class="info_card"></div>
-            <div class="info_card"></div>
-            <div class="info_card team_info"></div>
+            <div class='output_details_wrap'>
+				You are Here.<br>
+				The year is: {{year}}<br>
+				The universe is : {{age}} years old.<br>
+				Temperature outside is: {{cmb}} <br>
+				You've travelled a comoving distance of: {{com_dist}}<br>
+			</div>
+            <div class='output_details_wrap'>
+				You are Here.<br>
+				The year is: {{year}}<br>
+				The universe is : {{age}} years old.<br>
+				Temperature outside is: {{cmb}} <br>
+				You've travelled a comoving distance of: {{com_dist}}<br>
+			</div>
+            <div class='output_details_wrap team'>
+				Website Designed and developed by 
+                <br> ---------------------
+                <br> Ushasi and Kumaran 
+                <br>
+                ---------------------
+			</div>
+            
         </div>
     </div>
 </body>
@@ -109,6 +156,6 @@
     trial_run();
 
 </script>
-<script src='js/terminal_graphics.js' type='module'></script>
+
 
 </html>
