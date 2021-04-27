@@ -75,6 +75,7 @@
 /* Modal Content */
 .inp-modal-content {
   background-image: url("modal.png");
+  background-size: cover;
   margin: auto;
   padding: 20px;
   width: 80%;
@@ -123,7 +124,7 @@
 	width:70%;
 	display:flex;
 	flex-direction:column;
-	height:110%;
+	height:100%;
 	background-image: linear-gradient(to right, rgba(255,255,255,0.6) , rgba(255,255,255,0));
 	justify-content: space-between;
 	color:black;
