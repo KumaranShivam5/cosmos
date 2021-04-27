@@ -517,7 +517,7 @@ for (i = 0; i < N_star; i++) {
 }
 
 
-
+/*
 
 
 
@@ -553,7 +553,7 @@ gui.add(params, 'bloomRadius', 0.0, 1.0).step(0.01).onChange(function (value) {
 
 });
 
-
+*/
 
 
 

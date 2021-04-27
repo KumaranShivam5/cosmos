@@ -173,17 +173,61 @@
 			<div class="op-textbox-wrapper">
 				<div class='op-textbox'>
 					You are Here.<br>
-					The year is: {{year}}<br>
-					The universe is : {{age}} years old.<br>
-					Temperature outside is: {{cmb}} <br>
-					You've travelled a comoving distance of: {{com_dist}}<br>
-					<button class="op-detail" v-on:click='func_navigate(3)'>More</button>
+					<div class="result_txt_wrap">
+						<div class="res_txt">
+							The year is: 
+						</div>
+						<div class="res_txt_output">
+							{{year}}
+						</div>
+						
+					</div>
+					<div class="result_txt_wrap">
+						<div class="res_txt">
+							The universe is : 
+						</div>
+						<div class="res_txt_output">
+							{{age}} years old.
+						</div>
+						
+					</div>
+					<div class="result_txt_wrap">
+						<div class="res_txt">
+							Temperature outside is: 
+						</div>
+						<div class="res_txt_output">
+							{{cmb}}
+						</div>
+						
+					</div>
+					<div class="result_txt_wrap">
+						<div class="res_txt">
+							You've travelled a comoving distance of: 
+						</div>
+						<div class="res_txt_output">
+							{{com_dist}}
+						</div>
+						
+					</div>
+					<div class="result_txt_wrap">
+						<div class="res_txt">
+							Universe Status: 
+						</div>
+						<div class="res_txt_output">
+							unv_status_string_var
+						</div>
+						
+					</div>
+					
+					<button class="op-detail" v-on:click='func_navigate(1)'> Try Other Model </button>
 				</div>
 				<div class='rectangle'></div>
 				<div class='rectangle2'></div>
 			</div>
 
-
+			<div class="next_slide_btn" v-on:click='func_navigate(3)'>
+				More Details 
+			</div>
 			<div class="number-pagination">
 				<span>
 					<font color="#00ff7f">2</font>
@@ -245,13 +289,13 @@ Second panel shows how the density of various components that make up the univer
 					<div id="cmb_viewport" class="viewport_window">
 
 						<div class="sketchfab-embed-wrapper">
-							<!--
+							
 								<iframe title="Cmb" frameborder="0" allowfullscreen mozallowfullscreen="true"
 								webkitallowfullscreen="true" allow="fullscreen; autoplay;" xr-spatial-tracking
 								execution-while-out-of-viewport execution-while-not-rendered web-share
 								src="https://sketchfab.com/models/1b5413944ac34d84bc028543bb78fa92/embed?autospin=0&autostart=1&preload=0&ui_hint=1&ui_theme=dark">
 							</iframe>
-							-->
+							
 							
 						</div>
 					</div>
