@@ -133,7 +133,7 @@ var wire_mat = new THREE.MeshStandardMaterial({
 })
 
 // point light
-var bb_light = new THREE.PointLight('#f542d1', 100, 0);
+var bb_light = new THREE.PointLight('#ff2986', 100, 0);
 bb_light.position.set(-width / 6, 0, 0);
 scene.add(bb_light);
 
@@ -165,7 +165,7 @@ var structure_formation = new THREE.Object3D
 
         root.traverse(function (child) {
             if (child instanceof THREE.Mesh) {
-                child.material = wire_mat;
+                child.material =  new THREE.MeshStandardMaterial({color: "#000000"})
             }
         });
         //cmb = root;
@@ -174,6 +174,13 @@ var structure_formation = new THREE.Object3D
         scene.add(root);
     });
     objLoader.load('../model/scatter_particle.obj', (root) => {
+        
+        root.traverse(function (child) {
+            if (child instanceof THREE.Mesh) {
+                child.material =  new THREE.MeshStandardMaterial({color: "#ffffff"})
+            }
+        });
+
         scatter_particle_set = root
         root.position.set(-0.05 * width, 0, 0)
         scene.add(root);
@@ -188,7 +195,7 @@ var structure_formation = new THREE.Object3D
 // adding position plane
 
 const ring_geometry = new THREE.RingGeometry(160, 200, 64);
-const ring_mat = new THREE.MeshStandardMaterial({ color: 0xffff00, side: THREE.DoubleSide });
+const ring_mat = new THREE.MeshStandardMaterial({ color:'#111111', side: THREE.DoubleSide });
 const ring = new THREE.Mesh(ring_geometry, ring_mat);
 ring.rotation.y = -Math.PI / 2;
 ring.position.x = -80
@@ -345,18 +352,36 @@ let dark_age = 150*10^6
 let epoch_of_reion = 700*10^6
 */
 
-let big_bang = 0 
-let epoch_of_recom = 370*10^3
-let dark_age = 150*10^6
-let epoch_of_reion = 700*10^6
-let epoch_now =  13935216939.08 
+const big_bang = 0 
+const epoch_of_recom = 370*10^3
+const dark_age = 150*10^6
+const epoch_of_reion = 700*10^6
+const epoch_now =  13935216939.08 
 
-var halo_big_bang = -180 
-var halo_epoch_of_recom = -100 
-var halo_dark_age = -40
-var halo_reion = 60 
-var halo_now = 0
+const halo_big_bang = -180 
+const halo_epoch_of_recom = -100 
+const halo_dark_age = -40
+const halo_reion = 60 
+const halo_now = 200
 
-set_halo_loc(200);
+
+function linear_interp(x , x1,x2 , y1 , y2){
+    var slope = (y2-y1)/(x2-x1)
+    var y = y1+(x-x1)*slope
+    return y
+}
+
+function interp_01(x){
+    var y1 = halo_now 
+    var y2 = halo_reion 
+    var x1 = epoch_now 
+    var x2 = epoch_of_reion
+    var y = linear_interp(x , x1,x2,y1,y2)
+    return y 
+}
+
+var halo_loc =  interp_01(10935216939.08 ) ;
+//console.log('interpolation triAL' , trial_halo_loc)
+set_halo_loc(halo_loc);
 
 
