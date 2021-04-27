@@ -1,4 +1,11 @@
 
+
+var int_flag
+import * as CMB from './cmb_script.js'
+
+
+//import {total_age_of_universe , age_where_we_are} from './main.js';
+
 var interface_disp = new Vue({
 	el: '#interface-js-area',
 
@@ -110,6 +117,8 @@ var interface_disp = new Vue({
 					console.log(this.year);
 					if(this.year>0)	this.year=JSON.stringify(this.year)+" BC";
 					else this.year=JSON.stringify(-this.year)+" AD";
+					console.log("SETTING HALO POSITION")
+					CMB.set_halo_loc(12121212);
 					
 				})
 				.catch(e => {
@@ -214,8 +223,8 @@ var interface_disp = new Vue({
 
 	updated() {
 		this.other_curvatures();
-		total_age_of_universe=this.age+this.lookback;
-		age_where_we_are=this.age;
+		//total_age_of_universe=this.age+this.lookback;
+		//age_where_we_are=this.age;
 	},
 
 });
