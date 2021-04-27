@@ -37,6 +37,7 @@ var interface_disp = new Vue({
 		modal_heading: "Welcome",
 		modal_content: "Ushasi and Kumaran's Cosmology Calculator",
 		notification:[],
+		universe_status:[],
 		year:0
 		
 	},
@@ -81,6 +82,13 @@ var interface_disp = new Vue({
 			
 		},
 		
+		alter_status() {
+			if(z<370000) this.universe_status="Hot soup of plasma";
+			else if(z<150000000) this.universe_status="Pretty Dark!";
+			else if(z<700000000) this.universe_status="Some stars, but pre-reionisation";
+			else this.universe_status="Modern universe with galaxies and stuff...";
+		},
+		
 		posting_stuff()	{
 			var data_to_send = JSON.stringify({
 				"zgal": parseFloat(this.z),
@@ -118,6 +126,7 @@ var interface_disp = new Vue({
 					console.log(this.year);
 					if(this.year>0)	this.year=JSON.stringify(this.year)+" BC";
 					else this.year=JSON.stringify(-this.year)+" AD";
+					this.alter_status();
 					
 					
 				})
