@@ -16,7 +16,7 @@
 	<meta http-equiv="Pragma" content="no-cache" />
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<meta name="keyword" content="cosmology-calculator">
-	
+
 	<link rel='stylesheet' href='css/sliders2.css'>
 	<link rel='stylesheet' href='css/interface.css'>
 	<link rel='stylesheet' href='css/modal.css'>
@@ -24,7 +24,7 @@
 
 	<!--including theme and other css stuff here-->
 	<!--theme.css is for updating the theme and is shared with whole project-->
-	
+
 
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600;700;800;900&display=swap"
 		rel="stylesheet">
@@ -45,8 +45,8 @@
 	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>-->
 	<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 	<link rel="stylesheet" href="css/page_03.css" class="stylesheet">
-	
-	
+
+
 
 
 </head>
@@ -71,76 +71,83 @@
 		<div class="slider slide-1" id="s1">
 			<img class="inpimg" src="css/inp-back3.jpg" alt="">
 			<div class="background" id="particles-js"></div>
-			
+
 			<div class='inpwrapper'>
 				<div class="inpwrapper-children inpheading">
 					C O S M O L O G Y <br> C A L C U L A T O R <br>
 					<div class="inp-subtitle">" Our Place in The Universe "</div>
 					<button class='inpbutton' v-on:click='calc_output'><i class="fas fa-arrow-right"></i></button>
-					
-					
-					<div class="inp-universe-status">{{description_curve}}(&Omega;<sub>k</sub>):{{om_k.toFixed(6)}} </div>
+
+
+					<div class="inp-universe-status">{{description_curve}}(&Omega;<sub>k</sub>):{{om_k.toFixed(6)}}
+					</div>
 				</div>
-	
+
 				<div class="inpwrapper-children inpgrid-container">
-				<div class="inpgrid-item">
-					Matter Density Parameter
-					<div  class='inp-paratext'>How much of the critical density taken up by matter?</div>
-					<div class='inpinput-box'>
-						<div class='inpinput-label'>&Omega;<sub>m</sub></div>
-						<input type="text" class='inpinput-text' v-model='om_m' :value='om_m'></input>
-						<button class='inpinput-readmore' @click="maneover_modals(1)"><i class="far fa-comment-dots"></i></button>
+					<div class="inpgrid-item">
+						Matter Density Parameter
+						<div class='inp-paratext'>How much of the critical density taken up by matter?</div>
+						<div class='inpinput-box'>
+							<div class='inpinput-label'>&Omega;<sub>m</sub></div>
+							<input type="text" class='inpinput-text' v-model='om_m' :value='om_m'></input>
+							<button class='inpinput-readmore' @click="maneover_modals(1)"><i
+									class="far fa-comment-dots"></i></button>
+						</div>
 					</div>
-				</div>
-				<div class="inpgrid-item">
-					Redshift
-					<div  class='inp-paratext'>How far away are we looking?</div>
-					<div class='inpinput-box'>
-						<div class='inpinput-label'>z</div>
-						<input type='text' class='inpinput-text' v-model='z' :value='z'></input>
-						<button class='inpinput-readmore' @click="maneover_modals(2)"><i class="far fa-comment-dots"></i></button>
+					<div class="inpgrid-item">
+						Redshift
+						<div class='inp-paratext'>How far away are we looking?</div>
+						<div class='inpinput-box'>
+							<div class='inpinput-label'>z</div>
+							<input type='text' class='inpinput-text' v-model='z' :value='z'></input>
+							<button class='inpinput-readmore' @click="maneover_modals(2)"><i
+									class="far fa-comment-dots"></i></button>
+						</div>
 					</div>
-				</div>
-				<div class="inpgrid-item">
-					<div>Dark Energy</div>
-					<div  class='inp-paratext'>How much of the critical density taken up by dark energy?</div>
-					<div class='inpinput-box'>
-						<div class='inpinput-label'>&Omega;<sub>&lambda;</sub></div>
-						<input type='text' class='inpinput-text' v-model='om_v' :value='om_v'></input>
-						<button class='inpinput-readmore' @click="maneover_modals(3)"><i class="far fa-comment-dots"></i></button>
+					<div class="inpgrid-item">
+						<div>Dark Energy</div>
+						<div class='inp-paratext'>How much of the critical density taken up by dark energy?</div>
+						<div class='inpinput-box'>
+							<div class='inpinput-label'>&Omega;<sub>&lambda;</sub></div>
+							<input type='text' class='inpinput-text' v-model='om_v' :value='om_v'></input>
+							<button class='inpinput-readmore' @click="maneover_modals(3)"><i
+									class="far fa-comment-dots"></i></button>
+						</div>
 					</div>
-				</div>
-				<div class="inpgrid-item">
-					Radiation
-					<div  class='inp-paratext'>How much of the critical density taken up by radiation?</div>
-					<div class='inpinput-box'>
-						<div class='inpinput-label'>&Omega;<sub>r</sub></div>
-						<input type='text' class='inpinput-text' v-model='om_r' :value='om_r'></input>
-						<button class='inpinput-readmore' @click="maneover_modals(4)"><i class="far fa-comment-dots"></i></button>
+					<div class="inpgrid-item">
+						Radiation
+						<div class='inp-paratext'>How much of the critical density taken up by radiation?</div>
+						<div class='inpinput-box'>
+							<div class='inpinput-label'>&Omega;<sub>r</sub></div>
+							<input type='text' class='inpinput-text' v-model='om_r' :value='om_r'></input>
+							<button class='inpinput-readmore' @click="maneover_modals(4)"><i
+									class="far fa-comment-dots"></i></button>
+						</div>
 					</div>
-				</div>
-				<div class="inpgrid-item">
-					Hubble Constant
-					<div  class='inp-paratext'>Current rate of expansion of universe.(km/s/Mpc)</div>
-					<div class='inpinput-box'>
-						<div class='inpinput-label'>H<sub>0</sub></div>
-						<input type='text' class='inpinput-text' v-model='H_0' :value='H_0'></input>
-						<button class='inpinput-readmore' @click="maneover_modals(5)"><i class="far fa-comment-dots"></i></button>
+					<div class="inpgrid-item">
+						Hubble Constant
+						<div class='inp-paratext'>Current rate of expansion of universe.(km/s/Mpc)</div>
+						<div class='inpinput-box'>
+							<div class='inpinput-label'>H<sub>0</sub></div>
+							<input type='text' class='inpinput-text' v-model='H_0' :value='H_0'></input>
+							<button class='inpinput-readmore' @click="maneover_modals(5)"><i
+									class="far fa-comment-dots"></i></button>
+						</div>
 					</div>
-				</div>
-				<div class="inpgrid-item">
-					CMB Temperature
-					<div  class='inp-paratext'>Temperature of the CMBR today? (K)</div>
-					<div class='inpinput-box'>
-						<div class='inpinput-label'>T<sub>0</sub></div>
-						<input type='text' class='inpinput-text' v-model='T_0' :value='T_0'></input>
-						<button class='inpinput-readmore' @click="maneover_modals(6)"><i class="far fa-comment-dots"></i></button>
+					<div class="inpgrid-item">
+						CMB Temperature
+						<div class='inp-paratext'>Temperature of the CMBR today? (K)</div>
+						<div class='inpinput-box'>
+							<div class='inpinput-label'>T<sub>0</sub></div>
+							<input type='text' class='inpinput-text' v-model='T_0' :value='T_0'></input>
+							<button class='inpinput-readmore' @click="maneover_modals(6)"><i
+									class="far fa-comment-dots"></i></button>
+						</div>
 					</div>
-				</div>
 				</div>
 			</div>
 
-			
+
 			<!--<div class="number-pagination" style="z-index:103;">
 				<span>
 					<font color="aqua">1</font>
@@ -156,34 +163,34 @@
 				<!--
 					
 				-->
-			
-		
+
+
 
 
 			</div>
-			
+
 			<img class="bkgimg" src="images/3.jpg" alt="">
 			<div class="op-textbox-wrapper">
 				<div class='op-textbox'>
-				You are Here.<br>
-				The year is: {{year}}<br>
-				The universe is : {{age}} years old.<br>
-				Temperature outside is: {{cmb}} <br>
-				You've travelled a comoving distance of: {{com_dist}}<br>
-				<button class="op-detail" v-on:click='func_navigate(3)'>More</button>
+					You are Here.<br>
+					The year is: {{year}}<br>
+					The universe is : {{age}} years old.<br>
+					Temperature outside is: {{cmb}} <br>
+					You've travelled a comoving distance of: {{com_dist}}<br>
+					<button class="op-detail" v-on:click='func_navigate(3)'>More</button>
 				</div>
 				<div class='rectangle'></div>
 				<div class='rectangle2'></div>
 			</div>
-			
-		
+
+
 			<div class="number-pagination">
 				<span>
 					<font color="#00ff7f">2</font>
 				</span>
 			</div>
 		</div>
-		
+
 		<!-- Slider #3 -->
 		<div class="slider slide-3" id="s3">
 			<div class="t_main">
@@ -213,27 +220,35 @@
 						T<sub>0</sub> : {{T_0}}
 					</div>
 				</div>
-				<div class="some_info">
-					If the Cosmic Microwave Background radiation were absolutely homogenous and isotropic, there would have been no regions with a reason to clump together
-					and form the galaxies and stars we see today.					
-				</div>
+
 				<div class="t_mid_plot_panel">
 					<div class="plot_container">
 						<div class="plot_image_wrap">
 
 							<img id="plot_card_01" :src="plot_1" class='plot_card'>
 							<img id="plot_card_02" :src="plot_2" class='plot_card'>
+
 						</div>
-						<div class="plot_caption">First Panel is a plot of how the different distances are different from each other. <br>
-						Second panel shows how the density of various components that make up the universe vary with redshift.</div>
+						<div class="plot_caption">
+							First Panel is a plot of how the different distances are different from each other.
+Second panel shows how the density of various components that make up the universe vary with redshift.</div>
+
+
 					</div>
 
 				</div>
 				<div class="t_main_display">
+					<div class="some_info">
+						If the Cosmic Microwave Background radiation were absolutely homogenous and isotropic, there
+						would have been no regions with a reason to clump together
+						and form the galaxies and stars we see today. </div>
 					<div id="cmb_viewport" class="viewport_window">
 
 						<div class="sketchfab-embed-wrapper">
-							<iframe title="Cmb" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="fullscreen; autoplay;" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/1b5413944ac34d84bc028543bb78fa92/embed?autospin=0&autostart=1&preload=1&ui_hint=1&ui_theme=dark">
+							<iframe title="Cmb" frameborder="0" allowfullscreen mozallowfullscreen="true"
+								webkitallowfullscreen="true" allow="fullscreen; autoplay;" xr-spatial-tracking
+								execution-while-out-of-viewport execution-while-not-rendered web-share
+								src="https://sketchfab.com/models/1b5413944ac34d84bc028543bb78fa92/embed?autospin=0&autostart=1&preload=1&ui_hint=1&ui_theme=dark">
 							</iframe>
 						</div>
 					</div>
@@ -265,17 +280,16 @@
 						Luminosity Distance:{{lum_dist}} Mpc
 					</div>
 					<div class='output_details_wrap team'>
-						Website Designed and developed by 
+						Website Designed and developed by
 						<br> ---------------------
-						<br> Ushasi and Kumaran 
+						<br> Ushasi and Kumaran
 						<br>
 						---------------------
 					</div>
-            
-        </div>
-    </div>
+				</div>
+			</div>
 		</div>
-		
+
 		<!--popup -->
 		<div class="hover_bkgr_fricc">
 			<span class="helper"></span>
@@ -284,23 +298,25 @@
 				<p class="style_modal">{{notification}}</p>
 			</div>
 		</div>
-		
+
 		<div class="inp-modal" v-if="description_modal">
 			<div class="inp-modal-content">
-			<span class="inp-close" @click="close_modals()">&times;</span>
-			<div class="inp-modal-content-detail-wrapper">
-				<div class="inp-modal-content-heading-wrapper"><div class="inp-modal-content-heading">{{modal_heading}}</div></div>
-				<div class="inp-modal-content-para">{{modal_content}}</div>
-			</div>
-			
+				<span class="inp-close" @click="close_modals()">&times;</span>
+				<div class="inp-modal-content-detail-wrapper">
+					<div class="inp-modal-content-heading-wrapper">
+						<div class="inp-modal-content-heading">{{modal_heading}}</div>
+					</div>
+					<div class="inp-modal-content-para">{{modal_content}}</div>
+				</div>
+
 			</div>
 		</div>
-		
+
 
 	</div>
 
 	<script src="js/interface.js"></script>
-	
+
 	<!--<script>
 window.onload= function() {Particles.init({
 		selector: '.background',
@@ -312,35 +328,52 @@ window.onload= function() {Particles.init({
 };
 </script>-->
 
-<script type="text/javascript">
-particlesJS("particles-js", 
-{"particles":{"number":{"value":300,"density":{"enable":true,"value_area":800}},
-"color":{"value":["#ffffff","#4682B4","#fc6c85"]},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},
-"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},
-"opacity":{"value":0.75,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},
-"size":{"value":2,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.05,"sync":false}},
-"line_linked":{"enable":false,"distance":150,"color":"#ffffff","opacity":0.3,"width":1},
-"move":{"enable":true,"speed":1,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,
-"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"repulse"},
-"onclick":{"enable":false,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},
-"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},
-"remove":{"particles_nb":2}}},"retina_detect":true});
+	<script type="text/javascript">
+		particlesJS("particles-js",
+			{
+				"particles": {
+					"number": { "value": 300, "density": { "enable": true, "value_area": 800 } },
+					"color": { "value": ["#ffffff", "#4682B4", "#fc6c85"] }, "shape": {
+						"type": "circle", "stroke": { "width": 0, "color": "#000000" },
+						"polygon": { "nb_sides": 5 }, "image": { "src": "img/github.svg", "width": 100, "height": 100 }
+					},
+					"opacity": { "value": 0.75, "random": false, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } },
+					"size": { "value": 2, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.05, "sync": false } },
+					"line_linked": { "enable": false, "distance": 150, "color": "#ffffff", "opacity": 0.3, "width": 1 },
+					"move": {
+						"enable": true, "speed": 1, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false,
+						"attract": { "enable": false, "rotateX": 600, "rotateY": 1200 }
+					}
+				}, "interactivity": {
+					"detect_on": "canvas", "events": {
+						"onhover": { "enable": true, "mode": "repulse" },
+						"onclick": { "enable": false, "mode": "push" }, "resize": true
+					}, "modes": {
+						"grab": { "distance": 400, "line_linked": { "opacity": 1 } },
+						"bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 4 },
+						"remove": { "particles_nb": 2 }
+					}
+				}, "retina_detect": true
+			});
 
-var count_particles, stats, update; 
-stats = new Stats;
-stats.setMode(0); 
-stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px';
- stats.domElement.style.top = '0px'; document.body.appendChild(stats.domElement); 
- count_particles = document.querySelector('.js-count-particles'); 
- update = function() { stats.begin(); stats.end(); 
- if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { 
- count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } requestAnimationFrame(update); };
- requestAnimationFrame(update);;
-</script>
+		var count_particles, stats, update;
+		stats = new Stats;
+		stats.setMode(0);
+		stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px';
+		stats.domElement.style.top = '0px'; document.body.appendChild(stats.domElement);
+		count_particles = document.querySelector('.js-count-particles');
+		update = function () {
+			stats.begin(); stats.end();
+			if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+				count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+			} requestAnimationFrame(update);
+		};
+		requestAnimationFrame(update);;
+	</script>
 
 </body>
 
-	
+
 
 <script src="js/3d.js" type='module'></script>
 
@@ -349,45 +382,45 @@ stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px
 <script>
 
 
-function trial_run(){
+	function trial_run() {
 
-var data_to_send = JSON.stringify({
-"zgal": 1,
-"om_m": 0.3,
-"om_r": 0,
-"om_k": 0,
-"om_v": 0.7,
-"T_0": 2.7
-})
-
-
-console.log('inside trial run')
-var settings = {
-"url": "https://ushasi.pythonanywhere.com/calc/get_all/",
-"method": "POST",
-"timeout": 0,
-"headers": {
-"Content-Type": "application/json"
-},
-"data": data_to_send,
-};
-
-$.ajax(settings).done(function (response) {
-console.log(response);
-$('#age').html(response['age']);
-$('#time').html(response['look_back']);
-$('#temp').html(response['cmb']);
-$('#co_dist').html(response['com_dist']);
+		var data_to_send = JSON.stringify({
+			"zgal": 1,
+			"om_m": 0.3,
+			"om_r": 0,
+			"om_k": 0,
+			"om_v": 0.7,
+			"T_0": 2.7
+		})
 
 
-var plot_01 = "data:image/png;base64,"+response['plot_1'];
-$('#plot_trial_01').attr('src' , plot_01);
+		console.log('inside trial run')
+		var settings = {
+			"url": "https://ushasi.pythonanywhere.com/calc/get_all/",
+			"method": "POST",
+			"timeout": 0,
+			"headers": {
+				"Content-Type": "application/json"
+			},
+			"data": data_to_send,
+		};
 
-var plot_02 = "data:image/png;base64,"+response['plot_2'];
-$('#plot_trial_02').attr('src' , plot_02);
+		$.ajax(settings).done(function (response) {
+			console.log(response);
+			$('#age').html(response['age']);
+			$('#time').html(response['look_back']);
+			$('#temp').html(response['cmb']);
+			$('#co_dist').html(response['com_dist']);
 
-});
-}
+
+			var plot_01 = "data:image/png;base64," + response['plot_1'];
+			$('#plot_trial_01').attr('src', plot_01);
+
+			var plot_02 = "data:image/png;base64," + response['plot_2'];
+			$('#plot_trial_02').attr('src', plot_02);
+
+		});
+	}
 
 </script>
 

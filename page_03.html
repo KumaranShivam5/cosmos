@@ -23,24 +23,29 @@
 <body>
     <div class="t_main">
         <div class="t_top_panel">
-            <div class="param_card">
+            <div class="param_card" v-on:click="func_navigate(2)">
                 <i class="far fa-arrow-alt-circle-left"></i>
             </div>
             <div class="param_card">
-                Z <br> 1.5 
+                Z <br> {{z}}
             </div>
             <div class="param_card">
-                &Omega;<sub>&lambda;</sub>
+                &Omega;<sub>&lambda;</sub> : {{om_v}}
             </div>
             <div class="param_card">
-                &Omega;<sub>r</sub>
+                &Omega;<sub>r</sub>: {{om_r}}
             </div>
             <div class="param_card">
-                H<sub>0</sub>
+                &Omega;<sub>m</sub>: {{om_m}}
             </div>
             <div class="param_card">
-                T<sub>0</sub><br>
-                278 K
+                &Omega;<sub>k</sub>: {{om_k}}
+            </div>
+            <div class="param_card">
+                H<sub>0</sub> : {{H_0}}
+            </div>
+            <div class="param_card">
+                T<sub>0</sub> : {{T_0}}
             </div>
         </div>
         
@@ -48,8 +53,9 @@
             <div class="plot_container">
                 <div class="plot_image_wrap">
 
-                    <img id="plot_card_01" class='plot_card'>
-                    <img id="plot_card_02" class='plot_card'>
+                    <img id="plot_card_01" :src="plot_1" class='plot_card'>
+                    <img id="plot_card_02" :src="plot_2" class='plot_card'>
+                
                 </div>
                 <div class="plot_caption">some info about these plots would go here</div>
 
@@ -59,10 +65,8 @@
         </div>
         <div class="t_main_display">
             <div class="some_info">
-                some info about Cosmological microwave background anisotropy .
-                some info about Cosmological microwave background anisotropy .
-                some info about Cosmological microwave background anisotropy .
-            </div>
+                If the Cosmic Microwave Background radiation were absolutely homogenous and isotropic, there would have been no regions with a reason to clump together
+					and form the galaxies and stars we see today.	</div>
             <div id="cmb_viewport" class="viewport_window">
 
                 <div class="sketchfab-embed-wrapper">
@@ -87,27 +91,23 @@
         </div>
         <div class="t_bottom_panel">
             <div class='output_details_wrap'>
-				You are Here.<br>
-				The year is: {{year}}<br>
-				The universe is : {{age}} years old.<br>
-				Temperature outside is: {{cmb}} <br>
-				You've travelled a comoving distance of: {{com_dist}}<br>
-			</div>
+                Age Of Universe: {{age}} yrs<br>
+                Lookback Time: {{look_back}} yrs<br>
+                Temperature:{{cmb}} K <br>
+                Hubble Constant: {{H_val}} km/s/Mpc
+            </div>
             <div class='output_details_wrap'>
-				You are Here.<br>
-				The year is: {{year}}<br>
-				The universe is : {{age}} years old.<br>
-				Temperature outside is: {{cmb}} <br>
-				You've travelled a comoving distance of: {{com_dist}}<br>
-			</div>
+                Comoving Distance:{{com_dist}} Mpc<br>
+                Angular Diameter Distance: {{ang_dia}} Mpc<br>
+                Luminosity Distance:{{lum_dist}} Mpc
+            </div>
             <div class='output_details_wrap team'>
-				Website Designed and developed by 
+                Website Designed and developed by 
                 <br> ---------------------
                 <br> Ushasi and Kumaran 
                 <br>
                 ---------------------
-			</div>
-            
+            </div>
         </div>
     </div>
 </body>

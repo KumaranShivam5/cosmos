@@ -16,7 +16,7 @@ body {
     display: grid;
     width: 100%;
     height: 100vh;
-	overflow-y:scroll;
+	/*! overflow-y:scroll; */
     /*! overflow-x: hidden; */
 }
 
@@ -59,7 +59,8 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    line-height: 2.0;
+    /*! line-height: 2.0; */
+    font-size: 2vh;
 }
 .t_mid_plot_panel {
 
@@ -94,7 +95,7 @@ body {
     grid-area: footer;
     display: flex;
 	font-size:1vw;
-	margin-left:10vw;
+	/*! margin-left:10vw; */
     align-items: center;
     justify-content: space-between;
     padding: 2vh;
@@ -131,7 +132,9 @@ only grid properties here
     align-items: center;
 	font-size:1vw;
     justify-content: center;
-    color: #c830ff;
+    color: white;
+    padding: 2vh;
+    border-bottom: 1px dashed;
 }
 .plot_panel {
     grid-area: plot_panel;
@@ -158,6 +161,8 @@ only grid properties here
     width: 100%;
     display: flex;
     /*! grid-template-rows: 1fr 1fr 1fr 1fr; */
+    color: white;
+    border-top: 1px dashed;
 }
 
 .view_option{
