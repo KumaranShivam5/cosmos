@@ -21,12 +21,14 @@
 
 
 .inpimg {
-	width: 100vw;
 	/*overflow:hidden;*/
 	padding: 0 ;
 	margin:0;
+	max-width:120vw;
+	min-height:100vh;
 	position:absolute;
 	 z-index: -1; 
+	 background-size: cover;
 	object-fit: cover;
 	top: 0vh;
 	/*filter: blur(1px);*/
@@ -110,7 +112,7 @@
 
 .inpgrid-item {
   border: 1px solid #4682B4;
-  border-radius:25px 25px 25px 25px;
+  border-radius:10px 10px 10px 10px;
   padding: 10px;
   font-family:'Courier New', monospace;
   font-size: 3vh;
@@ -214,7 +216,7 @@
 	z-index:15;
 	bottom:5vh;
 	/*this is the variable*/
-	/*! left:50vw; */
+	left:50vw;
 }
 
 .op-textbox {
@@ -291,7 +293,7 @@
 
 @media only screen and (orientation:portrait) {
 	.inpimg {
-		width: 100vw;
+		width: auto;
 		height: 100vh;
 	}
 	
