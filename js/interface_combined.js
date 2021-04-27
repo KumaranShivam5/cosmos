@@ -83,9 +83,9 @@ var interface_disp = new Vue({
 		},
 		
 		alter_status() {
-			if(z<370000) this.universe_status="Hot soup of plasma";
-			else if(z<150000000) this.universe_status="Pretty Dark!";
-			else if(z<700000000) this.universe_status="Some stars, but pre-reionisation";
+			if(this.z<370000) this.universe_status="Hot soup of plasma";
+			else if(this.z<150000000) this.universe_status="Pretty Dark!";
+			else if(this.z<700000000) this.universe_status="Some stars, but pre-reionisation";
 			else this.universe_status="Modern universe with galaxies and stuff...";
 		},
 		
