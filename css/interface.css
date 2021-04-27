@@ -214,7 +214,7 @@
 	z-index:15;
 	bottom:5vh;
 	/*this is the variable*/
-	left:50vw;
+	/*! left:50vw; */
 }
 
 .op-textbox {
