@@ -107,7 +107,7 @@ body {
     display: flex;
     justify-content: space-evenly;
 }
-.plot_caption {padding-top: 1vh;border-top: 1px dashed;width: 100%;color: #bdbdbd;justify-content: space-around;display: flex;}
+.plot_caption {padding-top: 1vh;border-top: 1px dashed;width: 100%;color: #bdbdbd;justify-content: space-around;display: flex;padding-left: 2vh;padding-right: 2vh;}
 
 
 /*
@@ -213,4 +213,9 @@ only grid properties here
     
     width: 100%;
     object-fit: contain;
+}
+.param_card_go_back{
+    
+    border: 1px dashed;
+    font-size: 4vh;
 }
