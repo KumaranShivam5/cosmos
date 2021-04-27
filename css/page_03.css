@@ -76,7 +76,7 @@ body {
 
 .plot_card {
 
-    width: 50%;
+    width: 45%;
     /*! height: 100%; */
     /*! align-items: center; */
     /*! justify-content: center; */
@@ -85,8 +85,8 @@ body {
 
     grid-area: graphic_panel;
     display: flex;
-    flex-direction: row;
-    width: 42vw;
+    flex-direction: column;
+    width: 32vw;
 }
 .t_bottom_panel {
 
@@ -94,14 +94,16 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 2vh;
 }
 .info_card {}
 .team_info {}
 .plot_image_wrap {
 
     display: flex;
+    justify-content: space-evenly;
 }
-.plot_caption {}
+.plot_caption {padding-top: 1vh;border-top: 1px dashed;width: 100%;color: #bdbdbd;justify-content: space-around;display: flex;}
 
 
 /*
@@ -110,12 +112,12 @@ only grid properties here
 
 .t_main {
     display: grid;
-    grid-template-columns: 1fr 0.6fr 1.2fr;
-    grid-template-rows: 0.4fr 2fr 0.6fr;
+    grid-template-columns: 1fr 0.6fr 0.2fr;
+    grid-template-rows: 0.4fr 3fr 0.3fr;
     gap: 1vw 1vw;
     min-width: 25vw;
     max-width: 100vw;
-    grid-template-areas: "parameter_panel parameter_panel some_info" "plot_panel plot_panel graphic_panel" "footer footer footer";
+    grid-template-areas: "parameter_panel parameter_panel graphic_panel" "plot_panel plot_panel graphic_panel" "footer footer footer";
 }
 .parameter_panel {
     grid-area: parameter_panel;
@@ -124,8 +126,12 @@ only grid properties here
     grid-area: some_info;
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: #c830ff;
+    /*! justify-content: center; */
+    color: #fff;
+    border-bottom: 1px dashed;
+    padding: 2vh;
+    text-align: center;
+    width: 100%;
 }
 .plot_panel {
     grid-area: plot_panel;
@@ -139,7 +145,7 @@ only grid properties here
 
 
 #cmb_viewport {
-    width: 80%;
+    width: 100%;
     height: 100%;
     min-width: 80%;
     display: flex;
@@ -150,8 +156,8 @@ only grid properties here
 .viewport_options_panel{
     
     width: 100%;
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    display: flex;
+    /*! grid-template-rows: 1fr 1fr 1fr 1fr; */
 }
 
 .view_option{
@@ -164,6 +170,11 @@ only grid properties here
     justify-content: center;
     border: 1px solid #014437;
     padding: 5px;
+    /*! margin-top: 0; */
+    /*! margin-bottom: 0; */
+    opacity: 0.5;
+    cursor: pointer;
+    transition: 0.5s ease-in;
 }
 
 .output_details_wrap{
@@ -174,7 +185,7 @@ only grid properties here
     border-left: 1px solid;
     padding-right: 20px;
     border-right: 1px solid;
-    margin: 2%;
+    /*! margin: 2%; */
     /*! text-align: ; */
 }
 
