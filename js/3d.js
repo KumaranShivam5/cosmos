@@ -15,18 +15,19 @@ import { EffectComposer } from 'https://threejsfundamentals.org/threejs/resource
 import { RenderPass } from 'https://threejsfundamentals.org/threejs/resources/threejs/r127/examples/jsm/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'https://threejsfundamentals.org/threejs/resources/threejs/r127/examples/jsm/postprocessing/UnrealBloomPass.js';
 
-let composer, stats, clock ; 
+let composer, stats, clock;
 
 const params = {
     exposure: 1.2,
     bloomStrength: 1.1,
     bloomThreshold: 0,
-    bloomRadius: 1.0
+    bloomRadius: 1.0,
+    HaloLoc: 80
 };
 
 
 const scene = new THREE.Scene()
-const camera = new THREE.PerspectiveCamera( 45 , window.innerWidth / window.innerHeight, 0.1, 1000 )
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000)
 
 var width = window.innerWidth;
 var height = window.innerHeight;
@@ -132,7 +133,7 @@ var wire_mat = new THREE.MeshStandardMaterial({
 })
 
 // point light
-var bb_light = new THREE.PointLight('#ff1100', 100, 0);
+var bb_light = new THREE.PointLight('#f542d1', 100, 0);
 bb_light.position.set(-width / 6, 0, 0);
 scene.add(bb_light);
 
@@ -143,78 +144,130 @@ scene.add(bb_cold_light);
 
 
 var cmb = new THREE.Object3D
+var scatter_particle_set = new THREE.Object3D
+var structure_formation = new THREE.Object3D
 
 {
     const objLoader = new OBJLoader();
-    objLoader.load('../model/cmb.obj', (root) => {
+    objLoader.load('../model/cmb_v2.obj', (root) => {
 
         root.traverse(function (child) {
             if (child instanceof THREE.Mesh) {
                 child.material = wire_mat;
             }
         });
-
-
-
         cmb = root;
         cmb.scale.set(1, 1, 1);
-        cmb.position.set(-0.05*width, 0, 0)
-
-
+        cmb.position.set(-0.05 * width, 0, 0)
         scene.add(cmb);
+    });
+    objLoader.load('../model/dark_age.obj', (root) => {
+
+        root.traverse(function (child) {
+            if (child instanceof THREE.Mesh) {
+                child.material = wire_mat;
+            }
+        });
+        //cmb = root;
+        //cmb.scale.set(1, 1, 1);
+        root.position.set(-0.05 * width, 0, 0)
+        scene.add(root);
+    });
+    objLoader.load('../model/scatter_particle.obj', (root) => {
+        scatter_particle_set = root
+        root.position.set(-0.05 * width, 0, 0)
+        scene.add(root);
+    });
+    objLoader.load('../model/structure_formation.obj', (root) => {
+        structure_formation = root
+        root.position.set(-0.05 * width, 0, 0)
+        scene.add(root);
     });
 }
 
 // adding position plane
 
-const ring_geometry = new THREE.RingGeometry( 160, 200, 64 );
-const ring_mat = new THREE.MeshStandardMaterial( { color: 0xffff00, side: THREE.DoubleSide } );
-const ring = new THREE.Mesh( ring_geometry, ring_mat );
-ring.rotation.y= -Math.PI/2;
-ring.position.x = -80 
-scene.add( ring );
+const ring_geometry = new THREE.RingGeometry(160, 200, 64);
+const ring_mat = new THREE.MeshStandardMaterial({ color: 0xffff00, side: THREE.DoubleSide });
+const ring = new THREE.Mesh(ring_geometry, ring_mat);
+ring.rotation.y = -Math.PI / 2;
+ring.position.x = -80
+scene.add(ring);
+
+const loader = new THREE.FontLoader();
 
 
-const bb_center_geom = new THREE.SphereGeometry( 10, 32, 32 );
-const bb_center_material = new THREE.MeshStandardMaterial( {color: 0xffff00} );
-const bb_center = new THREE.Mesh( bb_center_geom, bb_center_material );
-bb_center.position.x = -200 ;
-scene.add( bb_center );
+let loc_font_geom
+loader.load('../fonts/helvetiker_regular.typeface.json', function (font) {
+
+    const geometry = new THREE.TextGeometry('Hello three.js!', {
+        font: font,
+        size: 80,
+        height: 5,
+        curveSegments: 12,
+        bevelEnabled: true,
+        bevelThickness: 10,
+        bevelSize: 8,
+        bevelOffset: 0,
+        bevelSegments: 5
+    });
+    loc_font_geom = font;
+});
+
+const font_mat = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+const address = new THREE.Mesh(loc_font_geom, font_mat);
+address.rotation.y = -Math.PI / 2;
+address.position.x = -80
+scene.add(address);
+
+// positipn plane ends here
+
+
+const bb_center_geom = new THREE.SphereGeometry(10, 32, 32);
+const bb_center_material = new THREE.MeshStandardMaterial({ color: 0xffff00 });
+const bb_center = new THREE.Mesh(bb_center_geom, bb_center_material);
+bb_center.position.x = -180;
+scene.add(bb_center);
 
 
 // position plane ends here
-const star_material = new THREE.MeshStandardMaterial( {color: 0xffff00} );
-let star , star_geom , star_arr = []
-var N_star = 1000
+const star_material = new THREE.MeshStandardMaterial({ color: 0xffff00 });
+let star, star_geom, star_arr = []
+var N_star = 2000
 var i;
 
 function randn_bm() {
     var u = 0, v = 0;
-    while(u === 0) u = Math.random(); //Converting [0,1) to (0,1)
-    while(v === 0) v = Math.random();
-    return Math.sqrt( -2.0 * Math.log( u ) ) * Math.cos( 2.0 * Math.PI * v );
+    while (u === 0) u = Math.random(); //Converting [0,1) to (0,1)
+    while (v === 0) v = Math.random();
+    return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
 }
 
-
-for(i=0 ; i<N_star ; i++){
-    star_geom = new THREE.SphereGeometry( 1 , 16, 16 );
-    star = new THREE.Mesh( star_geom , star_material );
+// BIG BANG EXPLOSION
+i = 0
+while (i < N_star) {
+    star_geom = new THREE.SphereGeometry(1, 8, 8);
+    star = new THREE.Mesh(star_geom, star_material);
     //star.position.x = Math.random() * 200 - 250 ;
     //star.position.y = Math.random() * 200 -100  ;
-    star.position.x = randn_bm() * 30 - 120 ;
-    star.position.y = randn_bm() * 30 - 5  ;
-    star.position.z = randn_bm() * 30   ;
-
-    star_arr.push(star)
+    var position_x = randn_bm() * 20 - 150
+    if (position_x > -180) {
+        star.position.x = position_x;
+        star.position.y = randn_bm() * 35;
+        star.position.z = randn_bm() * 35;
+        star_arr.push(star);
+        i++
+    }
 }
 
-for(i=0;i<N_star;i++){
+for (i = 0; i < N_star; i++) {
     scene.add(star_arr[i]);
 }
 
 
 
-/*
+
+
 
 const gui = new GUI();
 
@@ -236,13 +289,21 @@ gui.add(params, 'bloomStrength', 0.0, 3.0).onChange(function (value) {
 
 });
 
+//gui.add(params, 'position', -80 , 80).onChange(function (value) {
+
+//  ring.position.x = Number(value);
+
+//});
+
 gui.add(params, 'bloomRadius', 0.0, 1.0).step(0.01).onChange(function (value) {
 
     bloomPass.radius = Number(value);
 
 });
 
-*/
+
+
+
 
 window.addEventListener('resize', () => {
     let width = window.innerWidth
@@ -259,10 +320,43 @@ window.addEventListener('resize', () => {
 function animate() {
     requestAnimationFrame(animate)
     cmb.rotation.x += 0.002;
+    scatter_particle_set.rotation.x += 0.002
+    structure_formation.rotation.x += 0.002
     //cmb.rotation.y += 0.04;
-   
+
     //stats.update();
     renderer.render(scene, camera);
     composer.render();
 }
 animate()
+
+
+function set_halo_loc(x_pos) {
+    console.log('inside halo')
+    ring.position.x = Number(x_pos);
+
+};
+
+
+/*
+let big_bang = 0 
+let epoch_of_recom = 370*10^3
+let dark_age = 150*10^6
+let epoch_of_reion = 700*10^6
+*/
+
+let big_bang = 0 
+let epoch_of_recom = 370*10^3
+let dark_age = 150*10^6
+let epoch_of_reion = 700*10^6
+let epoch_now =  13935216939.08 
+
+var halo_big_bang = -180 
+var halo_epoch_of_recom = -100 
+var halo_dark_age = -40
+var halo_reion = 60 
+var halo_now = 0
+
+set_halo_loc(200);
+
+
