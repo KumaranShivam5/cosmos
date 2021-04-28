@@ -42,7 +42,8 @@ var interface_disp = new Vue({
 		modal_content: "Ushasi and Kumaran's Cosmology Calculator",
 		notification:[],
 		universe_status:[],
-		year:0
+		year:0 ,
+		loading_status : "Running Simulation"
 		
 	},
 
@@ -94,6 +95,7 @@ var interface_disp = new Vue({
 		},
 		
 		posting_stuff()	{
+			this.loading_status = "calculating ...."
 			var data_to_send = JSON.stringify({
 				"zgal": parseFloat(this.z),
 				"om_m": parseFloat(this.om_m),
@@ -103,7 +105,7 @@ var interface_disp = new Vue({
 				"T_0": parseFloat(this.T_0),
 				"H_0": parseFloat(this.H_0)
 			})
-			
+		
 			axios.post(
 				"https://ushasi.pythonanywhere.com/calc/get_all/", 
 				data_to_send,
@@ -135,7 +137,7 @@ var interface_disp = new Vue({
 					norm_factor = current_universe_max_age/ given_universe_max_age
 					console.log('lets see if normalisation is updated or not' , norm_factor)
 					update_values(norm_factor)
-					
+					this.loading_status = "Calculation Success..!"
 				})
 				.catch(e => {
 					console.log(e);
