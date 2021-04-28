@@ -19,7 +19,7 @@ Mpc=3.086*10**22
 
 #matter radiation curvature dark-energy
 def H(z,om_m,om_r,om_k,om_v,H_0):
-    return 1/(H_0*np.sqrt(om_m*(1+z)**3+om_r*(1+z)**4+om_k*(1+z)**2+om_v))
+    return (H_0*np.sqrt(om_m*(1+z)**3+om_r*(1+z)**4+om_k*(1+z)**2+om_v))
 
 def age_func(z,om_m,om_r,om_k,om_v,H_0):
     return 1/(H_0*(1+z)*np.sqrt(om_m*(1+z)**3+om_r*(1+z)**4+om_k*(1+z)**2+om_v))
@@ -58,6 +58,17 @@ def show(zgal,om_m,om_r,om_k,om_v,T_0=2.7,H_0=69.7*10**3/(10**6*3.086*10**16)):
 
 #aur koi plot ideas ho to batana...
 #color palette khud daal liyo apne front end ke hisab se...
+
+zgal = 0 
+H_0 = 69.7 
+om_m = 0.27 
+om_r = 0.0
+om_v = 0.73
+om_k = 1-om_m -  om_v - om_r 
+
+return_val = show(zgal , om_m , om_r , om_k , om_v)
+print(return_val)
+
 
 def possible_plots(om_m,om_r,om_k,om_v,H_0=69.7*10**3/(10**6*3.086*10**16)):
     #evolution of different distances with redshift
