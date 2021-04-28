@@ -242,7 +242,7 @@ var interface_disp = new Vue({
 					"size": { "value": 2, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.05, "sync": false } },
 					"line_linked": { "enable": false, "distance": 150, "color": "#ffffff", "opacity": 0.3, "width": 1 },
 					"move": {
-						"enable": true, "speed": 1, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false,
+						"enable": true, "speed": 3, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false,
 						"attract": { "enable": false, "rotateX": 600, "rotateY": 1200 }
 					}
 				}, "interactivity": {

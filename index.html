@@ -170,7 +170,7 @@
 			</div>
 
 			<img class="bkgimg" src="images/3.jpg" alt="">
-			<div class="op-textbox-wrapper">
+			<div class="op-textbox-wrapper wrapper_right">
 				<div class='op-textbox'>
 					You are Here.<br>
 					<div class="result_txt_wrap">
@@ -196,7 +196,7 @@
 							Temperature outside is:
 						</div>
 						<div class="res_txt_output">
-							{{cmb}}
+							{{cmb}} K
 						</div>
 
 					</div>
@@ -215,6 +215,57 @@
 						</div>
 						<div class="res_txt_output">
 							{{universe_status}}
+						</div>
+
+					</div>
+                    <div class="result_txt_wrap">
+						<div class="res_txt">
+							The representation is accurate is only for the Observed universe.
+                            Model not to scale.
+						</div>
+						
+					</div>
+
+					<button class="op-detail" v-on:click='func_navigate(1)'> Try Other MOdel </button>
+				</div>
+				<div class='rectangle'></div>
+				<div class='rectangle2'></div>
+			</div>
+            <div class="op-textbox-wrapper wrapper_left">
+				<div class='op-textbox'>
+					Your Input Model<br>
+					<div class="result_txt_wrap">
+						<div class="res_txt">
+							&Omega;<sub>&lambda;</sub> : {{om_v}}
+						</div>
+					</div>
+					<div class="result_txt_wrap">
+						<div class="res_txt">
+							&Omega;<sub>r</sub>: {{om_r}}
+						</div>
+
+					</div>
+					<div class="result_txt_wrap">
+						<div class="res_txt">
+							&Omega;<sub>k</sub>: {{om_k}}
+						</div>
+
+					</div>
+					<div class="result_txt_wrap">
+						<div class="res_txt">
+							&Omega;<sub>m</sub>: {{om_m}}
+						</div>
+
+					</div>
+					<div class="result_txt_wrap">
+						<div class="res_txt">
+							H<sub>0</sub>: {{H_0}}
+						</div>
+
+					</div>
+                    <div class="result_txt_wrap">
+						<div class="res_txt">
+							T<sub>0</sub>: {{T_0}}
 						</div>
 
 					</div>
@@ -258,10 +309,10 @@
 						&Omega;<sub>k</sub>: {{om_k}}
 					</div>
 					<div class="param_card">
-						H<sub>0</sub> : {{H_0}}
+						H<sub>0</sub> : {{H_0}} km/s/Mpc
 					</div>
 					<div class="param_card">
-						T<sub>0</sub> : {{T_0}}
+						T<sub>0</sub> : {{T_0}} K
 					</div>
 				</div>
 
@@ -323,7 +374,7 @@
 						Age Of Universe: {{age}} yrs<br>
 						Lookback Time: {{look_back}} yrs<br>
 						Temperature:{{cmb}} K <br>
-						Hubble Constant: {{H_val}} km/s/Mpc
+						Hubble Constant: {{H_val}} km/s/Mpc 
 					</div>
 					<div class='output_details_wrap'>
 						Comoving Distance:{{com_dist}} Mpc<br>

@@ -216,6 +216,14 @@
 	z-index:15;
 	/*! bottom:5vh; */
 	/*this is the variable*/
+	
+}
+
+.wrapper_left{
+	left:0;
+	display:none;
+}
+.wrapper_right{
 	left:0;
 }
 
