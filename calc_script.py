@@ -19,7 +19,7 @@ Mpc=3.086*10**22
 
 #matter radiation curvature dark-energy
 def H(z,om_m,om_r,om_k,om_v,H_0):
-    return (H_0*np.sqrt(om_m*(1+z)**3+om_r*(1+z)**4+om_k*(1+z)**2+om_v))
+    return 1/(H_0*np.sqrt(om_m*(1+z)**3+om_r*(1+z)**4+om_k*(1+z)**2+om_v))
 
 def age_func(z,om_m,om_r,om_k,om_v,H_0):
     return 1/(H_0*(1+z)*np.sqrt(om_m*(1+z)**3+om_r*(1+z)**4+om_k*(1+z)**2+om_v))
@@ -53,6 +53,7 @@ def show(zgal,om_m,om_r,om_k,om_v,T_0=2.7,H_0=69.7*10**3/(10**6*3.086*10**16)):
     angular_dia=ang_dist(comoving_dist,zgal)
     luminosity_dist=lum_dist(comoving_dist,zgal)
     Hval=H(zgal,om_m,om_r,om_k,om_v,H_0)*10**3/Mpc
+    Hval = 1/Hval
     cmb=cmb_temp(zgal,T_0)
     return(age,lookback,angular_dia,luminosity_dist,comoving_dist,Hval,cmb)
 
