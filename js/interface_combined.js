@@ -2,6 +2,9 @@
 
 
 var int_flag
+var current_universe_max_age =  13935216939.08 
+var norm_factor 
+var given_universe_max_age
 //import * as CMB from './cmb_script.js'
 
 
@@ -30,6 +33,7 @@ var interface_disp = new Vue({
 		lum_dist:0,
 		plot_1:[],
 		plot_2:[],
+
 		
 		//flag_activate: false,
 		description_modal:false,
@@ -127,7 +131,10 @@ var interface_disp = new Vue({
 					if(this.year>0)	this.year=JSON.stringify(this.year)+" BC";
 					else this.year=JSON.stringify(-this.year)+" AD";
 					this.alter_status();
-					
+					given_universe_max_age = (this.age + this.look_back)
+					norm_factor = current_universe_max_age/ given_universe_max_age
+					console.log('lets see if normalisation is updated or not' , norm_factor)
+					update_values(norm_factor)
 					
 				})
 				.catch(e => {
@@ -223,7 +230,7 @@ var interface_disp = new Vue({
 	mounted() {
 		////////////////////
 		this.posting_stuff();
-
+		
 
 
 		///////////////////////
@@ -232,9 +239,10 @@ var interface_disp = new Vue({
 
 	updated() {
 		this.other_curvatures();
+		
 		//total_age_of_universe=this.age+this.lookback;
 		//age_where_we_are=this.age;
-		console.log("SETTING HALO POSITION")
+		//console.log("SETTING HALO POSITION max_age" , max_age)
 		set_halo_loc(this.age);
 	},
 
@@ -600,11 +608,35 @@ let dark_age = 150*10^6
 let epoch_of_reion = 700*10^6
 */
 
-const epoch_big_bang = 0 
-const epoch_recom = 370*10**3
-const epoch_dark_age = 150*10**6
-const epoch_reion = 700*10**6
-const epoch_now =  13935216939.08 
+
+//var norm_factor = max_age / 13935216939.08 
+//console.log("Max age now" , max_age)
+//console.log("NOrm factor" , norm_factor)
+
+
+const epoch_big_bang_abs = 0 
+const epoch_recom_abs = 370*10**3
+const epoch_dark_age_abs = 150*10**6
+const epoch_reion_abs = 700*10**6
+const epoch_now_abs =  13935216939.08 
+
+
+var epoch_big_bang = 0 
+
+var epoch_recom
+var epoch_dark_age
+var epoch_reion
+var epoch_now
+
+function update_values(norm_factor){
+	epoch_recom = norm_factor*(370*10**3)
+	epoch_dark_age =  norm_factor*(150*10**6)
+	epoch_reion =  norm_factor*(700*10**6 )
+	epoch_now =   norm_factor*( 13935216939.08 )
+
+	console.log("UPDATED VALUES" , epoch_recom , epoch_dark_age , epoch_reion , epoch_now)
+}
+
 
 const halo_big_bang = -180 
 const halo_recom = -100 
@@ -622,8 +654,8 @@ function linear_interp(x , x1,x2 , y1 , y2){
 function interp_04(x){
     var y1 = halo_recom
     var y2 = halo_big_bang 
-    var x1 = epoch_recom
-    var x2 = epoch_big_bang
+    var x1 = epoch_recom_abs
+    var x2 = epoch_big_bang_abs
     var y = linear_interp(x , x1,x2,y1,y2)
  
 
@@ -634,24 +666,24 @@ function interp_04(x){
 function interp_03(x){
     var y1 = halo_dark_age
     var y2 = halo_recom 
-    var x1 = epoch_dark_age
-    var x2 = epoch_recom
+    var x1 = epoch_dark_age_abs
+    var x2 = epoch_recom_abs
     var y = linear_interp(x , x1,x2,y1,y2)
     return y 
 }
 function interp_02(x){
     var y1 = halo_reion 
     var y2 = halo_dark_age
-    var x1 = epoch_reion
-    var x2 = epoch_dark_age
+    var x1 = epoch_reion_abs
+    var x2 = epoch_dark_age_abs
     var y = linear_interp(x , x1,x2,y1,y2)
     return y 
 }
 function interp_01(x){
     var y1 = halo_now 
     var y2 = halo_reion 
-    var x1 = epoch_now 
-    var x2 = epoch_reion
+    var x1 = epoch_now_abs
+    var x2 = epoch_reion_abs
     var y = linear_interp(x , x1,x2,y1,y2)
     return y 
 }
@@ -665,22 +697,24 @@ var current_loc_trial = 10
 //console.log('interpolation triAL' , trial_halo_loc)
 
 function set_halo_loc(now) {
+	now =  norm_factor*now
     var halo_loc
-    console.log('inside halo' , now);
+    console.log('inside halo' , now );
+
     if(now >= epoch_reion){
-		console.log('inside REGION 01' , now , epoch_reion)
+		console.log('inside REGION 01' , now )
         halo_loc =  interp_01(now) ;
     } 
 	if(now >= epoch_dark_age && now < epoch_reion){
-		console.log('inside REGION 02')
+		console.log('inside REGION 02' , now)
 		halo_loc =  interp_02(now) ;
 	}
 	if(now >= epoch_recom && now < epoch_dark_age){
-		console.log('inside REGION 03')
+		console.log('inside REGION 03' , now)
 		halo_loc =  interp_03(now) ;
 	}
 	if(now >= epoch_big_bang && now < epoch_recom){
-		console.log('inside REGION 04')
+		console.log('inside REGION 04', now)
 		halo_loc =  interp_04(now) ;
 	}
 	console.log('current halo position' , halo_loc);
