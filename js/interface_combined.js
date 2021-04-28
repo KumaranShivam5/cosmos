@@ -257,6 +257,7 @@ var interface_disp = new Vue({
 				}, "retina_detect": true
 			});
 
+			/*
 		var count_particles, stats, update;
 		stats = new Stats;
 		stats.setMode(0);
@@ -270,6 +271,7 @@ var interface_disp = new Vue({
 			} requestAnimationFrame(update);
 		};
 		requestAnimationFrame(update);;
+		*/
 
 
 		///////////////////////
@@ -317,7 +319,7 @@ import { EffectComposer } from 'https://threejsfundamentals.org/threejs/resource
 import { RenderPass } from 'https://threejsfundamentals.org/threejs/resources/threejs/r127/examples/jsm/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'https://threejsfundamentals.org/threejs/resources/threejs/r127/examples/jsm/postprocessing/UnrealBloomPass.js';
 
-let composer, stats, clock;
+let composer, clock;
 
 const params = {
     exposure: 1.2,
@@ -349,7 +351,7 @@ renderer.setClearColor("#222222", 0)
 
 var canvas = document.getElementById('viewport');
 
-stats = new Stats();
+//stats = new Stats();
 //canvas.appendChild(stats.dom);
 
 clock = new THREE.Clock();
