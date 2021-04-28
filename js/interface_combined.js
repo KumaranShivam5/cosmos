@@ -291,8 +291,10 @@ const params = {
 const scene = new THREE.Scene()
 const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000)
 
+
 var width = window.innerWidth;
 var height = window.innerHeight;
+
 
 //const camera = new THREE.OrthographicCamera(width / - 2, width / 2, height / 2, height / - 2, 1, 10000000);
 
@@ -322,13 +324,11 @@ camera.position.z = 600
 
 
 
-
-
-
-
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.maxPolarAngle = 0.9 * Math.PI / 2;
 controls.enableZoom = true;
+
+
 
 
 
